@@ -1,0 +1,306 @@
+[09-Nov-2023 11:45:27 Africa/Nairobi] PHP Warning:  extract() expects parameter 1 to be array, null given in /home/softmasc/public_html/profilecode/app/vendorsignup.php on line 12
+[09-Nov-2023 22:01:30 Africa/Nairobi] PHP Notice:  Undefined property: stdClass::$ResponseCode in /home/mmojygds/public_html/app/initiatepayment.php on line 56
+[09-Nov-2023 22:58:10 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 22:58:10 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 22:58:10 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:05:20 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:05:20 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:05:20 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:05:51 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:05:51 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:05:51 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:08:04 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:08:04 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:08:04 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:09:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:09:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:09:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:12:24 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:12:24 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:12:24 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:12:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:12:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:12:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:12:59 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:12:59 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:12:59 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:36:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:36:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:36:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:38:25 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:38:25 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:38:25 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Nov-2023 23:40:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Nov-2023 23:40:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Nov-2023 23:40:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[10-Nov-2023 00:25:50 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[10-Nov-2023 00:25:50 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[10-Nov-2023 00:25:50 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[10-Nov-2023 08:55:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[10-Nov-2023 08:55:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[10-Nov-2023 08:55:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[10-Nov-2023 08:55:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[10-Nov-2023 08:55:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[10-Nov-2023 08:55:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[10-Nov-2023 08:56:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[10-Nov-2023 08:56:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[10-Nov-2023 08:56:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[10-Nov-2023 08:56:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[10-Nov-2023 08:56:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[10-Nov-2023 08:56:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[10-Nov-2023 17:03:40 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[10-Nov-2023 17:03:40 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[10-Nov-2023 17:03:40 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[11-Nov-2023 13:22:00 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[11-Nov-2023 13:22:00 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[11-Nov-2023 13:22:00 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[11-Nov-2023 17:05:55 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[11-Nov-2023 17:05:55 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[11-Nov-2023 17:05:55 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[11-Nov-2023 17:06:03 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[11-Nov-2023 17:06:03 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[11-Nov-2023 17:06:03 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[11-Nov-2023 17:09:03 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[11-Nov-2023 17:09:03 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[11-Nov-2023 17:09:03 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[11-Nov-2023 19:42:12 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[11-Nov-2023 19:42:12 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[11-Nov-2023 19:42:12 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 08:59:15 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 08:59:15 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 08:59:15 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 09:03:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 09:03:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 09:03:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 09:50:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 09:50:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 09:50:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 09:52:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 09:52:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 09:52:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 12:11:31 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 12:11:31 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 12:11:31 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 12:51:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 12:51:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 12:51:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 13:23:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 13:23:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 13:23:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 13:28:33 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 13:28:33 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 13:28:33 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 13:31:16 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 13:31:16 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 13:31:16 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 13:39:41 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 13:39:41 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 13:39:41 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 14:49:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 14:49:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 14:49:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 15:33:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 15:33:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 15:33:21 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Nov-2023 20:12:02 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Nov-2023 20:12:02 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Nov-2023 20:12:02 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[13-Nov-2023 10:21:48 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[13-Nov-2023 10:21:48 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[13-Nov-2023 10:21:48 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[13-Nov-2023 17:10:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[13-Nov-2023 17:10:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[13-Nov-2023 17:10:38 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[13-Nov-2023 17:17:29 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[13-Nov-2023 17:17:29 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[13-Nov-2023 17:17:29 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[13-Nov-2023 17:18:49 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[13-Nov-2023 17:18:49 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[13-Nov-2023 17:18:49 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[13-Nov-2023 17:19:57 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[13-Nov-2023 17:19:57 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[13-Nov-2023 17:19:57 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[14-Nov-2023 15:43:37 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[14-Nov-2023 15:43:37 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[14-Nov-2023 15:43:37 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[14-Nov-2023 17:26:56 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[14-Nov-2023 17:26:56 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[14-Nov-2023 17:26:56 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[14-Nov-2023 17:41:43 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[14-Nov-2023 17:41:43 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[14-Nov-2023 17:41:43 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[16-Nov-2023 12:17:04 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[16-Nov-2023 12:17:04 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[16-Nov-2023 12:17:04 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 17:08:37 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 17:08:37 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 17:08:37 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 17:08:46 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 17:08:46 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 17:08:46 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 17:09:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 17:09:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 17:09:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 17:21:41 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 17:21:41 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 17:21:41 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 17:23:19 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 17:23:19 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 17:23:19 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 20:51:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 20:51:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 20:51:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 22:08:52 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 22:08:52 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 22:08:52 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[17-Nov-2023 23:36:26 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[17-Nov-2023 23:36:26 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[17-Nov-2023 23:36:26 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[20-Nov-2023 21:46:33 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[20-Nov-2023 21:46:33 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[20-Nov-2023 21:46:33 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[21-Nov-2023 20:50:28 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[21-Nov-2023 20:50:28 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[21-Nov-2023 20:50:28 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[24-Nov-2023 00:07:11 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[24-Nov-2023 00:07:11 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[24-Nov-2023 00:07:11 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[24-Nov-2023 00:12:29 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[24-Nov-2023 00:12:29 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[24-Nov-2023 00:12:29 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[25-Nov-2023 19:01:34 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[25-Nov-2023 19:01:34 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[25-Nov-2023 19:01:34 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[25-Nov-2023 19:05:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[25-Nov-2023 19:05:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[25-Nov-2023 19:05:47 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[25-Nov-2023 22:53:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[25-Nov-2023 22:53:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[25-Nov-2023 22:53:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[26-Nov-2023 13:31:51 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[26-Nov-2023 13:31:51 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[26-Nov-2023 13:31:51 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[01-Dec-2023 22:56:00 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[01-Dec-2023 22:56:00 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[01-Dec-2023 22:56:00 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[01-Dec-2023 23:09:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[01-Dec-2023 23:09:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[01-Dec-2023 23:09:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[02-Dec-2023 10:27:39 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[02-Dec-2023 10:27:39 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[02-Dec-2023 10:27:39 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[05-Dec-2023 18:32:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[05-Dec-2023 18:32:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[05-Dec-2023 18:32:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[08-Dec-2023 16:57:18 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[08-Dec-2023 16:57:18 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[08-Dec-2023 16:57:18 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[08-Dec-2023 21:11:54 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[08-Dec-2023 21:11:54 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[08-Dec-2023 21:11:54 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[08-Dec-2023 22:43:09 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[08-Dec-2023 22:43:09 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[08-Dec-2023 22:43:09 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[08-Dec-2023 22:43:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[08-Dec-2023 22:43:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[08-Dec-2023 22:43:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[08-Dec-2023 22:45:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[08-Dec-2023 22:45:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[08-Dec-2023 22:45:30 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[09-Dec-2023 08:52:44 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[09-Dec-2023 08:52:44 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[09-Dec-2023 08:52:44 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Dec-2023 13:59:42 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Dec-2023 13:59:42 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Dec-2023 13:59:42 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Dec-2023 14:00:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Dec-2023 14:00:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Dec-2023 14:00:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[12-Dec-2023 14:01:25 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[12-Dec-2023 14:01:25 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[12-Dec-2023 14:01:25 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[18-Dec-2023 10:06:09 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[18-Dec-2023 10:06:09 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[18-Dec-2023 10:06:09 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[20-Dec-2023 01:14:15 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[20-Dec-2023 01:14:15 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[20-Dec-2023 01:14:15 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[20-Dec-2023 01:19:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[20-Dec-2023 01:19:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[20-Dec-2023 01:19:32 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[20-Dec-2023 01:22:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[20-Dec-2023 01:22:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[20-Dec-2023 01:22:35 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[22-Dec-2023 02:09:40 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[22-Dec-2023 02:09:40 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[22-Dec-2023 02:09:40 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[22-Dec-2023 20:34:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[22-Dec-2023 20:34:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[22-Dec-2023 20:34:17 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[24-Dec-2023 02:06:28 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[24-Dec-2023 02:06:28 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[24-Dec-2023 02:06:28 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[24-Dec-2023 02:06:36 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[24-Dec-2023 02:06:36 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[24-Dec-2023 02:06:36 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[24-Dec-2023 02:10:54 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[24-Dec-2023 02:10:54 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[24-Dec-2023 02:10:54 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[25-Dec-2023 03:26:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[25-Dec-2023 03:26:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[25-Dec-2023 03:26:06 Africa/Nairobi] PHP Notice:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[25-Jan-2024 07:10:26 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/mmojygds/public_html/config/phpmailer/class.smtp.php:388
+Stack trace:
+#0 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(756): SMTP->Data('Date: Thu, 25 J...')
+#1 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(576): PHPMailer->SmtpSend('Date: Thu, 25 J...', '<!DOCTYPE html ...')
+#2 /home/mmojygds/public_html/app/vendorsignup.php(23): PHPMailer->Send()
+#3 {main}
+  thrown in /home/mmojygds/public_html/config/phpmailer/class.smtp.php on line 388
+[30-Jan-2024 18:15:45 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[30-Jan-2024 18:15:45 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[30-Jan-2024 18:15:45 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[31-Jan-2024 22:58:29 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[31-Jan-2024 22:58:29 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[31-Jan-2024 22:58:29 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[01-Feb-2024 06:55:34 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[01-Feb-2024 06:55:34 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[01-Feb-2024 06:55:34 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[02-Feb-2024 18:29:59 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[02-Feb-2024 18:29:59 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[02-Feb-2024 18:29:59 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[05-Feb-2024 20:17:50 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[05-Feb-2024 20:17:50 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[05-Feb-2024 20:17:50 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[05-Feb-2024 20:22:08 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[05-Feb-2024 20:22:08 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[05-Feb-2024 20:22:08 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[13-Feb-2024 01:52:55 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[13-Feb-2024 01:52:55 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[13-Feb-2024 01:52:55 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[19-Feb-2024 12:57:45 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[19-Feb-2024 12:57:45 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[19-Feb-2024 12:57:45 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
+[19-Feb-2024 13:02:47 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/mmojygds/public_html/config/phpmailer/class.smtp.php:388
+Stack trace:
+#0 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(756): SMTP->Data('Date: Mon, 19 F...')
+#1 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(576): PHPMailer->SmtpSend('Date: Mon, 19 F...', '<!DOCTYPE html ...')
+#2 /home/mmojygds/public_html/app/vendorsignup.php(23): PHPMailer->Send()
+#3 {main}
+  thrown in /home/mmojygds/public_html/config/phpmailer/class.smtp.php on line 388
+[20-Feb-2024 15:08:40 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/mmojygds/public_html/config/phpmailer/class.smtp.php:388
+Stack trace:
+#0 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(756): SMTP->Data('Date: Tue, 20 F...')
+#1 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(576): PHPMailer->SmtpSend('Date: Tue, 20 F...', '<!DOCTYPE html ...')
+#2 /home/mmojygds/public_html/app/vendorsignup.php(23): PHPMailer->Send()
+#3 {main}
+  thrown in /home/mmojygds/public_html/config/phpmailer/class.smtp.php on line 388
+[20-Feb-2024 15:11:36 Africa/Nairobi] PHP Fatal error:  Uncaught Error: Call to undefined function each() in /home/mmojygds/public_html/config/phpmailer/class.smtp.php:388
+Stack trace:
+#0 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(756): SMTP->Data('Date: Tue, 20 F...')
+#1 /home/mmojygds/public_html/config/phpmailer/class.phpmailer.php(576): PHPMailer->SmtpSend('Date: Tue, 20 F...', '<!DOCTYPE html ...')
+#2 /home/mmojygds/public_html/app/vendorsignup.php(23): PHPMailer->Send()
+#3 {main}
+  thrown in /home/mmojygds/public_html/config/phpmailer/class.smtp.php on line 388
+[20-Feb-2024 15:19:03 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 14
+[20-Feb-2024 15:19:03 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 15
+[20-Feb-2024 15:19:03 Africa/Nairobi] PHP Warning:  Trying to access array offset on value of type null in /home/mmojygds/public_html/app/checkpayment2.php on line 16
