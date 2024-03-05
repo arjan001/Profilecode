@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+ include_once("includes/config.php");
+ include_once("includes/auth.php");
+ $now = date('Y-m-d H:i:s');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -25,13 +34,7 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -75,81 +78,54 @@
                   <div class="col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4">
                       <h3 class="h5">Your Earnings</h3>
-                      <p class="fs-sm">Your current earnings of <span class='fw-medium'>KSH 1,375.00</span> will be sent to you 26/02/2024</p>
+                      <p class="fs-sm">Your current earnings of <span class='fw-medium'>KSH </span> </p>
                     </div>
                   </div>
                   <div class="col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4">
                       <h3 class="h5">Payout method</h3>
-                      <div class="d-flex flex-wrap align-items-center py-1 mb-2"><img class="d-block mb-2 me-2" src="../img/mpesa2.png" width="100" alt="Mpesa"><span class="fs-xs mb-2">4sammycollins@gmail.com</span></div><a class="btn btn-primary btn-sm" href="#withdraw-modal" data-bs-toggle="modal">WITHDRAW</a>
+                      <div class="d-flex flex-wrap align-items-center py-1 mb-2"><img class="d-block mb-2 me-2" src="../img/mpesa2.png" width="100" alt="Mpesa"><span class="fs-xs mb-2"><?php echo $user["vemail"];?></span></div><a class="btn btn-primary btn-sm" href="#withdraw-modal" data-bs-toggle="modal">WITHDRAW</a>
                     </div>
                   </div>
                 </div>
                 <h3 class="h5 pb-2">Payout history</h3>
                 <div class="table-responsive">
                   <table class="table table-layout-fixed fs-sm mb-0">
+
                     <thead>
+
                       <tr>
+
                         <th>Amount</th>
-                        <th>Payout method</th>
                         <th>Date processed</th>
+                        
                       </tr>
                     </thead>
+
                     <tbody>
+                    <?php
+                          $chkpurchs = mysqli_query($con,"SELECT * FROM withdrawals WHERE 
+                          vendorid='$vendorid' ORDER BY id DESC");
+
+                           while($row = mysqli_fetch_assoc( $chkpurchs)){
+                           $withdrawid=$row["id"]; 
+
+                           
+                           ?>
+
+
                       <tr>
-                        <td>KSH 1,233.84</td>
-                        <td>Mpesa</td>
-                        <td>July 16, 2019</td>
+
+                        <td>KSH <?php echo number_format($row["amount"]);?></td>
+                        <td><?php echo date("d M Y",strtotime($row["createdon"]));?></td>
+
                       </tr>
-                      <tr>
-                        <td>KSH 805.79</td>
-                        <td>Mpesa</td>
-                        <td>July 1, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 1,564.98</td>
-                        <td>Mpesa</td>
-                        <td>June 17, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 697.79</td>
-                        <td>Mpesa</td>
-                        <td>June 2, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 2,060.80</td>
-                        <td>Payoneer</td>
-                        <td>May 15, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 754.30</td>
-                        <td>Payoneer</td>
-                        <td>May 1, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 1,372.26</td>
-                        <td>Payoneer</td>
-                        <td>April 16, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 1,296.41</td>
-                        <td>SWIFT</td>
-                        <td>April 3, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 339.57</td>
-                        <td>SWIFT</td>
-                        <td>March 17, 2019</td>
-                      </tr>
-                      <tr>
-                        <td>KSH 493.24</td>
-                        <td>SWIFT</td>
-                        <td>February 28, 2019</td>
-                      </tr>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>
                 <hr class="mb-grid-gutter">
+
                 <!-- Pagination-->
                 <nav class="d-md-flex justify-content-between align-items-center text-center text-md-start" aria-label="Page navigation">
                   <div class="d-md-flex align-items-center w-100"><span class="fs-sm text-muted me-md-3">Showing 10 of 52 records</span>

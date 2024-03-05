@@ -3,5 +3,6 @@
     <script src="../vendor/simplebar/dist/simplebar.min.js"></script>
     <script src="../vendor/tiny-slider/dist/min/tiny-slider.js"></script>
     <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Main theme script-->
     <script src="../js/theme.min.js"></script>

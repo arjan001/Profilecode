@@ -1,7 +1,12 @@
 <?php
 session_start();
-$sessionid = session_id();
+ $sessionid = session_id();
 include_once("config/index.php");
+if(isset($_POST['searchproduct'])){
+    $searchproduct=$_POST['searchproduct'];
+}else{
+    header("Location:index.php");
+}
 ?>
 
 
@@ -11,7 +16,7 @@ include_once("config/index.php");
 
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Shop grid filters on top</title>
+    <title><?php echo $searchproduct ?> | PROFILECODE| Shop grid filters on top</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Leading Digital File Marketplace">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -19,9 +24,9 @@ include_once("config/index.php");
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -34,13 +39,7 @@ include_once("config/index.php");
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -66,12 +65,12 @@ include_once("config/index.php");
                   <li class="breadcrumb-item"><a class="text-nowrap" href="index.php"><i class="ci-home"></i>Home</a></li>
                   <li class="breadcrumb-item text-nowrap"><a href="#">Search </a>
                   </li>
-                  <li class="breadcrumb-item text-nowrap active" aria-current="page">Sammy Product 1</li>
+                  
                 </ol>
               </nav>
             </div>
             <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-              <h1 class="h3 text-light mb-0">YOUR SEARCH RESULTS FOR PRODUCT 1</h1>
+              <h1 class="h3 text-light mb-0">YOUR SEARCH RESULTS</h1>
             </div>
           </div>
         </div>
@@ -80,181 +79,42 @@ include_once("config/index.php");
 
         <!-- Products grid-->
         <div class="row pt-3 mx-n2">
-
+        <?php
+                                                $listproducts=mysqli_query($con,"SELECT * FROM products,categories,subcategories WHERE (productname LIKE '%$searchproduct%' OR description LIKE '%$searchproduct%' OR categories.catname LIKE '%$searchproduct%' OR subcategories.subcatname LIKE '%$searchproduct%') AND products.productcategory=categories.id AND products.subcat1=subcategories.id AND categories.id=subcategories.catid");
+                                                if(mysqli_num_rows($listproducts)>0){
+                                                while($lp=mysqli_fetch_assoc($listproducts)){
+            ?>
           <!-- Product-->
 
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
+              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="products/<?php echo $lp['productimage'] ?>" alt="<?php echo $lp['productname'] ?>"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED PRODUCT</a>
+                <h3 class="product-title fs-sm"><a href="single-product.php"><?php echo $lp['productname'] ?></a></h3>
                 <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
+                  <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?> </span></div>
                   <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
                   </div>
                 </div>
               </div>
               <div class="card-body card-body-hidden">
 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"  id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                
               </div>
             </div>
             <hr class="d-sm-none">
+
+
           </div>
+          <?php }}else{ ?>
+                      <div class="product-info">
+                                   <h6 class="product-name">No product or category found, please try again</h6>
+                                  
+                              </div>
+                     <?php } ?>
 
-          <!-- Product-->
 
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED CATEGORY</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Searched Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 154 .<small>00</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
 
 
 
@@ -281,207 +141,7 @@ include_once("config/index.php");
           </div>
         </div>
 
-        <!-- Products grid-->
-        <div class="row mx-n2">
 
-        <h2 class="h3 text-center mb-4">DIDN'T FIND YOU PRODUCT , SEE SIMILAR </h2>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Cosmetics</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Similar Product 33</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 12.<small>99</small></span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-half active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
- 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-
-        </div>
-        <hr class="my-3">
-        <!-- Pagination-->
-        <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#"><i class="ci-arrow-left me-2"></i>Prev</a></li>
-          </ul>
-          <ul class="pagination">
-            <li class="page-item d-sm-none"><span class="page-link page-link-static">1 / 5</span></li>
-            <li class="page-item active d-none d-sm-block" aria-current="page"><span class="page-link">1<span class="visually-hidden">(current)</span></span></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">2</a></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">3</a></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">4</a></li>
-            <li class="page-item d-none d-sm-block"><a class="page-link" href="#">5</a></li>
-          </ul>
-          <ul class="pagination">
-            <li class="page-item"><a class="page-link" href="#" aria-label="Next">Next<i class="ci-arrow-right ms-2"></i></a></li>
-          </ul>
-        </nav>
       </div>
     </main>
     <!-- Footer-->

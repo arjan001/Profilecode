@@ -125,7 +125,7 @@
                         </div>
 
 
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Withdraw</button>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">submit</button>
                     </form>
 
                 </div>
@@ -141,7 +141,7 @@
                 <div class="modal-header bg-secondary">
                     <ul class="nav nav-tabs card-header-tabs" role="tablist">
                         <li class="nav-item">
-                          <a class="nav-link fw-medium active"  data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>New Category</a></li>
+                          <a class="nav-link fw-medium active"  data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>New SubCategory</a></li>
                         
 
                     </ul>
@@ -160,14 +160,6 @@
                             <div class="invalid-feedback">Category Name cant be blank</div>
                         </div>
 
-                        <!-- <div class="mb-3">
-        <label class="form-label" for="Fname">SubCategory Name<span style="color: red">*</span></label>
-                            <br>
-                            
-                            <input class="form-control" type="text" id="SubCatName" placeholder="Printable Codes"  required>
-                            <div class="invalid-feedback">SubCategory Name cant be blank</div>
-                        </div> -->
-
                         <div class="mb-3">
                        
                         <select class="form-select" id="select-input">
@@ -180,7 +172,7 @@
                     </div>
 
 
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Withdraw</button>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Submit</button>
                     </form>
 
                 </div>

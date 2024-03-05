@@ -13,7 +13,9 @@
 
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 active" href="index.php"><i class="ci-settings opacity-60 me-2"></i>Dashboard</a></li>
 
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 " href="settings.php"><i class="ci-settings opacity-60 me-2"></i>Settings</a></li>
+                    <!-- <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3 " href="settings.php"><i class="ci-settings opacity-60 me-2"></i>Settings</a></li> -->
+
+                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="products.php"><i class="ci-package opacity-60 me-2"></i>Products</a></li>
 
               
                   </ul>
@@ -21,8 +23,8 @@
                   <ul class="list-unstyled mb-0">
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="add-new-product.php"><i class="ci-cloud-upload opacity-60 me-2"></i>Add New Product</a></li>
 
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="earnings.php"><i class="ci-dollar opacity-60 me-2"></i>Earnings<span class="fs-sm text-muted ms-auto">KSH 1,375.00</span></a></li>
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="products.php"><i class="ci-package opacity-60 me-2"></i>Products<span class="fs-sm text-muted ms-auto">5</span></a></li>
+                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="earnings.php"><i class="ci-dollar opacity-60 me-2"></i>Earnings</a></li>
+                    
                     
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="withdrawals.php"><i class="ci-currency-exchange opacity-60 me-2"></i>Withdrawals</a></li>
                     <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>

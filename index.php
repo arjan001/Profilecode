@@ -30,23 +30,9 @@ include_once("config/index.php");
   <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css" />
   <!-- Main Theme Styles + Bootstrap-->
   <link rel="stylesheet" media="screen" href="css/theme.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <!-- Google Tag Manager-->
-  <script>
-    (function(w, d, s, l, i) {
-      w[l] = w[l] || [];
-      w[l].push({
-        'gtm.start': new Date().getTime(),
-        event: 'gtm.js'
-      });
-      var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s),
-        dl = l != 'dataLayer' ? '&l=' + l : '';
-      j.async = true;
-      j.src =
-        '../www.googletagmanager.com/gtm5445.html?id=' + i + dl;
-      f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-WKV3GT5');
-  </script>
+
 </head>
 
 
@@ -61,7 +47,7 @@ include_once("config/index.php");
   <section class="tns-carousel tns-controls-lg">
     <div class="tns-carousel-inner" data-carousel-options="{&quot;mode&quot;: &quot;gallery&quot;, &quot;responsive&quot;: {&quot;0&quot;:{&quot;nav&quot;:true, &quot;controls&quot;: false},&quot;992&quot;:{&quot;nav&quot;:false, &quot;controls&quot;: true}}}">
       <!-- Item-->
-      <div class="px-lg-5" style="background-color: #3aafd2;">
+      <div class="px-sm-5" style="background-color: #3aafd2;">
         <div class="d-lg-flex justify-content-between align-items-center ps-lg-4"><img class="d-block order-lg-2 me-lg-n5 flex-shrink-0" src="img/home/hero-slider/dummy.png" alt="Summer Collection">
           <div class="position-relative mx-auto me-lg-n5 py-5 px-4 mb-lg-5 order-lg-1" style="max-width: 42rem; z-index: 10;">
             <div class="pb-lg-5 mb-lg-5 text-center text-lg-start text-lg-nowrap">
@@ -161,196 +147,49 @@ include_once("config/index.php");
 
 
         <!-- Products grid-->
-        <div class="row mx-n2">
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-          <!-- Product-->
-
-           <div class="col-md-3 col-sm-6 px-2 mb-4">
-
-            <div class="card product-card">
-               
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Premium Certificates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Collins Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 40 .<small>50</small></span></div>
-  
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-
-
-
+        <div class="row mx-n2"  id="defaultcontent">
           
-          
+        <?php
+             $listproducts=mysqli_query($con,"SELECT * FROM products ORDER BY id DESC LIMIT 12");
+            while($lp=mysqli_fetch_assoc($listproducts)){   ?>
+            
+
+          <!-- Product-->
+
+           <div class="col-md-3 col-sm-6 px-2 mb-4">
+
+            <div class="card product-card">
+               
+              <a class="card-img-top d-block overflow-hidden" href="product/<?php echo $lp['url'] ?>"><img src="products/<?php echo $lp['productimage'] ?>" alt="<?php echo $lp['productname'] ?> " class="fit-image"></a>
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#"></a>
+                <h3 class="product-title fs-sm"><a href="product/<?php echo $lp['url'] ?>"><?php echo $lp['productname'] ?></a></h3>
+                <div class="d-flex justify-content-between">
+                  <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
+  
+                </div>
+              </div>
+              <div class="card-body card-body-hidden">
+
+                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>" ><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                
+              </div>
+            </div>
+            <hr class="d-sm-none">
+
+            
+          </div>
+          <?php } ?> 
+
+          <style>
+           .fit-image {
+    max-width: 550px;  /* Set the maximum width */
+    max-height: 370px; /* Set the maximum height */
+    width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
+    height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
+    object-fit: cover;
+}
+            </style>
+
         </div>
 
 
@@ -363,12 +202,10 @@ include_once("config/index.php");
             </div><img class="d-block ms-auto" src="img/shop/catalog/dummy2.png" alt="Shop Converse">
           </div>
         </div>
+
         <!-- Products grid-->
+
         <div class="row mx-n2">
-
-
-
-
 
           <!-- Product-->
            <div class="col-md-3 col-sm-6 px-2 mb-4">
@@ -603,6 +440,86 @@ include_once("config/index.php");
       </section>
   <!-- footer section code was removed here -->
   <?php include_once("includes/footer.php") ?>
+
+  <script>
+           $('#defaultcontent').on('click', '.addtocart', function(){
+            var productid=$(this).attr("id");
+            var sessionid="<?php echo $sessionid ?>"
+            $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
+            $.ajax({
+            
+            url:"app/addtocart.php",
+            method:"POST",
+            data:{productid:productid,sessionid:sessionid},
+            success: 
+            function(returnhtml){
+            if(returnhtml=="success"){
+            $("#status").fadeIn(1);
+            $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product Added to cart </div>");
+            $('.hi1').load(document.URL +  ' .hi1');
+            $("#status").fadeOut(3000);
+            }else{
+            $("#status").fadeIn(1);
+            $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error adding product to cart</div>");
+            $('.hi1').load(document.URL +  ' .hi1');
+            $("#status").fadeOut(3000);
+            }
+          }
+          
+            })
+            });
+
+ </script>
+
+<!-- LOGIN SIGNUP AJAX SCRIPT STARTS HERE -->
+<script>
+            $(function() {
+             $("#loginfrm").submit(function(e){
+               e.preventDefault();
+                $("#status").html("<p class='alert alert-success'><i class='fas fa-spinner fa-pulse'></i> Logging in...</p>");
+                $.ajax({
+                  method: "POST",
+                  url : "app/vendorlogin.php",
+                  data: new FormData(this),
+                  contentType: false,
+                  processData: false,
+                  cache: false
+                }).done(function (data){
+                 if(data.status == 200){
+                  window.location.replace("seller/");
+                 }
+                 if(data.status == 300){
+                  $("#status").html("<p class='alert alert-danger'><i class='fas fa-exclamation-circle'></i> Login invalid. Wrong email or password.</p>");
+                 }
+                });
+               
+             });
+             
+              $("#signupfrm").submit(function(e){
+               e.preventDefault();
+                $("#status").html("<p class='alert alert-success'><i class='fas fa-spinner fa-pulse'></i> Submitting data...</p>");
+                $.ajax({
+                  method: "POST",
+                  url : "app/vendorsignup",
+                  data: new FormData(this),
+                  contentType: false,
+                  processData: false,
+                  cache: false
+                }).done(function (data){
+                 if(data.status == 200){
+                  $("#status").html("<p class='alert alert-success'><i class='fas fa-check'></i> Signup successful. Please login to proceed</p>");
+                 }
+                 if(data.status == 300){
+                  $("#status").html("<p class='alert alert-danger'><i class='fas fa-exclamation-circle'></i> Login invalid. Wrong email or password.</p>");
+                 }
+                });
+               
+             });
+             
+            });
+</script>
+<!-- LOGIN SIGNUP AJAX SCRIPT STARTS HERE -->
+
 </body>
 
 </html>

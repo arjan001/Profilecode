@@ -1,10 +1,19 @@
+<?php
+ob_start();
+session_start();
+
+ include_once("includes/config.php");
+ include_once("includes/auth.php");
+ $now = date('Y-m-d H:i:s');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
 
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Sales</title>
+    <title>PROFILECODE| EARNINGS </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Bootstrap E-commerce Template">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -84,89 +93,44 @@
                     <th>Acc No</th>
                     <th>Txn Code</th>
                     <th>Sale Date</th>
-                    <th></th>
+                    
                   </tr>
                 </thead>
                 <tbody>
+
+                <?php
+             $chkearnings = mysqli_query($con,"SELECT vendorsales.*,products.url,products.productname,products.productprice,products.docs FROM vendorsales,products WHERE vendorsales.vendorid='$vendorid' AND vendorsales.productid=products.id ORDER BY vendorsales.id DESC");
+             while($row = mysqli_fetch_assoc($chkearnings)){
+                 $vid=$row["id"];
+                 $vendorid=$row["vendorid"];
+                //  $paid=$row["paid"];
+                if($vendorid!="0"){
+                    $vendor=mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM vendors WHERE id='$vendorid'"));
+                    $vname=$vendor["vname"];
+                    $vphone=$vendor["vphone"];
+                }else{
+                   $vname="Admin"; 
+                   $vphone="";
+                }
+             ?>
           
 
                 
                   <tr>
                     <td class="py-3 align-middle">
                       <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
+                        <div class="ps-2"><span class="fw-medium text-heading me-1"><?php echo $row["productname"];?></span></div>
                       </div>
                     </td>
-                    <td class="py-3 align-middle">Attachment 1</td>
-                    <td class="py-3 align-middle">ksh 26</td>
-                    <td class="py-3 align-middle">ksh 6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
+                    <td class="py-3 align-middle"><a target="_blank" href="../docs/<?php echo $row['docs'] ?>">View Attachment</a></td>
+                    <td class="py-3 align-middle">Ksh. <?php echo $row["amount"];?></td>
+                    <td class="py-3 align-middle">Ksh. <?php echo $row["sitecommission"];?></td>
+                    <td class="py-3 align-middle"><?php echo $row["accno"];?></td>
+                    <td class="py-3 align-middle"><?php echo $row["txncode"];?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y",strtotime($row["createdon"]));?></td>
                     
                   </tr>
-
-                  <tr>
-
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">Attachment 1</td>
-                    <td class="py-3 align-middle">ksh 26</td>
-                    <td class="py-3 align-middle">ksh 6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">Attachment 1</td>
-                    <td class="py-3 align-middle">ksh 26</td>
-                    <td class="py-3 align-middle">ksh 6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">Attachment 1</td>
-                    <td class="py-3 align-middle">ksh 26</td>
-                    <td class="py-3 align-middle">ksh 6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">Attachment 1</td>
-                    <td class="py-3 align-middle">ksh 26</td>
-                    <td class="py-3 align-middle">ksh 6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-                  
+                  <?php } ?>
                 </tbody>
               </table>
 

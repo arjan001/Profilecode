@@ -2,13 +2,13 @@
 session_start();
 $sessionid = session_id();
 include_once("config/index.php");
- $expld_url = $_SERVER["REQUEST_URI"];
- $url =  $_GET['fbclid'] ??  $expld_url;
-$expld_url = explode("/",  $url);
- $url = end( $expld_url);
-if (!empty( $url)) {
-     $lb = mysqli_fetch_assoc(mysqli_query( $con, "SELECT * FROM categories WHERE url='KSH url'"));
-    // KSH pcatid = KSH lb["id"];
+$expld_url = $_SERVER["REQUEST_URI"];
+$url = $_GET['fbclid'] ?? $expld_url;
+$expld_url = explode("/", $url);
+$url = end($expld_url);
+if (!empty($url)) {
+    $lb = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM categories WHERE url='$url'"));
+    $pcatid = $lb["id"];
 } else {
     header("Location:../");
 }
@@ -20,7 +20,7 @@ if (!empty( $url)) {
 
 <head>
     <meta charset="utf-8">
-    <title>ProfileCode | Kenyans Leading Digital Files store</title>
+    <title> ProfileCode | Kenyans Leading Digital Files store</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE - Leading Digital File Marketplace">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -28,9 +28,9 @@ if (!empty( $url)) {
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -41,14 +41,9 @@ if (!empty( $url)) {
     <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -113,159 +108,50 @@ if (!empty( $url)) {
         <h2 class="h3 text-center">Trending Product Files</h2>
         <div class="row pt-4 mx-n2">
 
+
+                                              <?php
+                                                if($pcatid!=""){
+                                                $listproducts=mysqli_query($con,"SELECT * FROM products WHERE productcategory='$pcatid' ORDER BY id DESC LIMIT 32");
+                                                }else{
+                                                 $listproducts=mysqli_query($con,"SELECT * FROM products ORDER BY id DESC LIMIT 32");   
+                                                }
+                                                while($lp=mysqli_fetch_assoc($listproducts)){
+                                                ?>
+
+
           <!-- Product-->
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
+              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="./products/<?php echo $lp['productimage'] ?>"  class="fit-image" alt="<?php echo $lp['productname'] ?>"></a>
               <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
+                <h3 class="product-title fs-sm"><a href="single-product.php"><?php echo $lp['productname'] ?></a></h3>
                 <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
+                  <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
     
                 </div>
               </div>
               <div class="card-body card-body-hidden">
 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                
               </div>
             </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
             <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
-          </div>
-          <!-- Product-->
-          <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
-              <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php">Sammy Product 1</a></h3>
-                <div class="d-flex justify-content-between">
-                  <div class="product-price"><span class="text-accent">KSH 100 .<small>00</small></span></div>
-    
-                </div>
-              </div>
-              <div class="card-body card-body-hidden">
-
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                <div class="text-center"><a class="nav-link-style fs-ms" href="#quick-view" data-bs-toggle="modal"><i class="ci-eye align-middle me-1"></i>Quick view</a></div>
-              </div>
-            </div>
-            <hr class="d-sm-none">
           </div>
 
+          <?php } ?>
+
+          <style>
+           .fit-image {
+    max-width: 550px;  /* Set the maximum width */
+    max-height: 370px; /* Set the maximum height */
+    width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
+    height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
+    object-fit: cover;
+}
+            </style>
 
         </div>
 

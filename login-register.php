@@ -97,6 +97,7 @@ include_once("config/index.php");
             <?php include_once("includes/footer.php") ?> 
             <script src="assets/js/jquery.min.js"></script>
             <script src="assets/bootstrap/bootstrap.min.js"></script>
+            
             <script>
             KSH (function() {
              KSH ("#loginfrm").submit(function(e){
@@ -104,7 +105,7 @@ include_once("config/index.php");
                 KSH ("#status").html("<p class='alert alert-success'><i class='fas fa-spinner fa-pulse'></i> Logging in...</p>");
                 KSH .ajax({
                   method: "POST",
-                  url : "app/vendorlogin",
+                  url : "app/vendorlogin.php",
                   data: new FormData(this),
                   contentType: false,
                   processData: false,

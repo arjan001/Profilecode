@@ -1,5 +1,5 @@
 <?php
-include_once("../config/index.php"); 
+include_once("../config/index.php");
 if(isset($_POST["cartid"])) {
  $cartid=$_POST["cartid"];
 $sessionid=$_POST["sessionid"];

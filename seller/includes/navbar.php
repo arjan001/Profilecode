@@ -49,12 +49,15 @@
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button>
               
   
-              <div class="navbar-tool dropdown ms-2"><a class="navbar-tool-icon-box border dropdown-toggle" href="dashboard-sales.html"><img src="../img/marketplace/account/avatar-sm.png" width="32" alt="ProfileCode"></a><a class="navbar-tool-text ms-n1" href="dashboard-sales.html"><small>Vendor Edwin.</small>KSH 1,375.00</a>
+              <div class="navbar-tool dropdown ms-2"><a class="navbar-tool-icon-box border dropdown-toggle" href="#"><img src="../img/marketplace/account/avatar-sm.png" width="32" alt="ProfileCode"></a><a class="navbar-tool-text ms-n1" href="#"><small><?php echo $user["vname"];?></small>KSH <?php echo number_format(mysqli_fetch_assoc(mysqli_query($con,"SELECT SUM(amount) AS ttearnings FROM vendorsales WHERE vendorid='$vendorid'"))["ttearnings"],2);?>  </a>
                 <div class="dropdown-menu dropdown-menu-end">
                   <div style="min-width: 14rem;">
-                    <h6 class="dropdown-header">Account</h6><a class="dropdown-item d-flex align-items-center" href="settings.php"><i class="ci-settings opacity-60 me-2"></i>Settings</a>
+                    <h6 class="dropdown-header">Account</h6>
+
+                    <!-- <a class="dropdown-item d-flex align-items-center" href="settings.php"><i class="ci-settings opacity-60 me-2"></i>Settings</a> -->
                   
-                    <a class="dropdown-item d-flex align-items-center" href="../account-signin.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
+                    <a class="dropdown-item d-flex align-items-center"
+                     href="logout.php"><i class="ci-sign-out opacity-60 me-2"></i>Log Out</a>
                   </div>
                 </div>
               </div>
@@ -68,7 +71,7 @@
 
               <!-- Primary menu-->
               <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.php">Back to shopping Page</a></li>
+                <li class="nav-item"><a class="nav-link" href="../index.php">Back to shopping Page</a></li>
               </ul>
             </div>
           </div>

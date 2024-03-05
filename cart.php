@@ -27,16 +27,11 @@ include_once("config/index.php");
     <!-- Vendor Styles including: Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="vendor/simplebar/dist/simplebar.min.css"/>
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
+    <script src="js/jquery-3.7.1.min.js"></script>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
 
   <!-- Body-->
@@ -72,40 +67,38 @@ include_once("config/index.php");
             <div class="d-flex justify-content-between align-items-center pt-3 pb-4 pb-sm-5 mt-1">
               <h2 class="h6 text-light mb-0">Products</h2><a class="btn btn-outline-primary btn-sm ps-2" href="shop.php"><i class="ci-arrow-left me-2"></i>Continue shopping</a>
             </div>
+
+                                          <?php
+                                            $listcart=mysqli_query($con,"SELECT * FROM cart WHERE sessionid='$sessionid'");
+                                            $subtotal=0;
+                                            if(mysqli_num_rows($listcart)>0){
+                                            while($lc=mysqli_fetch_assoc($listcart)){
+                                                $productid=$lc["productid"];
+                                                $cartid=$lc["id"];
+                                                $product=mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM products WHERE id='$productid'"));
+                                                
+                                                $subtotal+=$product['productprice']*$lc['quantity'];
+                                            ?>
+
+
             <!-- Item-->
             <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
               <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html"><img src="img/shop/cart/dummy.png" width="160" alt="Product"></a>
                 <div class="pt-2">
-                  <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html">Sammy Product 1 </a></h3>
+                  <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html"><?php echo $product['productname'] ?></a></h3>
         
-                  <div class="fs-lg text-accent pt-2">KSH 154.<small>00</small></div>
+                  <div class="fs-lg text-accent pt-2">KSH <?php echo $product['productprice']*$lc['quantity'] ?></div>
                 </div>
               </div>
               <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
-                <label class="form-label" for="quantity1">Quantity</label>
-                <input class="form-control" type="number" id="quantity1" min="1" value="1">
-                <button class="btn btn-link px-0 text-danger" type="button"><i class="ci-close-circle me-2"></i><span class="fs-sm">Remove</span></button>
-              </div>
-            </div>
-            <!-- Item-->
-            <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
-              <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="shop-single-v1.html"><img src="img/shop/cart/dummy.png" width="160" alt="Product"></a>
-                <div class="pt-2">
-                  <h3 class="product-title fs-base mb-2"><a href="shop-single-v1.html">Sammy Product 1 </a></h3>
-        
-                  <div class="fs-lg text-accent pt-2">KSH 154.<small>00</small></div>
-                </div>
-              </div>
-              <div class="pt-2 pt-sm-0 ps-sm-3 mx-auto mx-sm-0 text-center text-sm-start" style="max-width: 9rem;">
-                <label class="form-label" for="quantity1">Quantity</label>
-                <input class="form-control" type="number" id="quantity1" min="1" value="1">
-                <button class="btn btn-link px-0 text-danger" type="button"><i class="ci-close-circle me-2"></i><span class="fs-sm">Remove</span></button>
+                
+                <button class="btn btn-link px-0 text-danger removefromcart" type="button"><i class="removefromcart ci-close-circle me-2" id="<?php echo $lc['id'] ?>"></i><span class="fs-sm">Remove</span></button>
               </div>
             </div>
 
+            <?php }} ?>
 
-
-            <button class="btn btn-outline-accent d-block w-100 mt-4" type="button"><i class="ci-loading fs-base me-2"></i>Update cart</button>
+            <!-- <button class="btn btn-outline-accent d-block w-100 mt-4" type="button"><i class="ci-loading fs-base me-2"></i>Update cart</button> -->
           </section>
 
 
@@ -116,7 +109,7 @@ include_once("config/index.php");
               <div class="py-2 px-xl-2">
                 <div class="text-center mb-4 pb-3 border-bottom">
                   <h2 class="h6 mb-3 pb-1">Subtotal</h2>
-                  <h3 class="fw-normal">KSH 265.<small>00</small></h3>
+                  <h3 class="fw-normal">KSH  <?php echo $subtotal ?></h3>
                 </div>
                 <div class="accordion" id="order-options">
 
@@ -133,6 +126,39 @@ include_once("config/index.php");
  <!-- footer section code was removed here -->
   <?php include_once("includes/footer.php") ?>
 
+
+
+
+                 <script>
+                    // remove from cart
+                    $(".removefromcart").click(function(){
+                  var cartid= $(this).attr("id");
+                  var sessionid="<?php echo $sessionid ?>"
+                    $.ajax({
+                    
+                    url:"app/removefromcart.php",
+                    method:"POST",
+                    data:{cartid:cartid,sessionid:sessionid},
+                    success: 
+                    function(returnhtml){
+                    if(returnhtml=="success"){
+                     $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product removed from cart </div>");
+                        setTimeout( 
+                      function() {
+                        window.location.reload("cart.php");
+                      }, 2000);
+                    }else{
+                    $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error removing product</div>");
+                        setTimeout( 
+                      function() {
+                        window.location.reload(true);
+                      }, 2000);
+                    }
+                    }
+                    })
+                  
+                 });
+    </script>
   </body>
 
 </html>
