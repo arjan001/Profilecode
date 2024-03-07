@@ -5,3 +5,4 @@
     <script src="../vendor/smooth-scroll/dist/smooth-scroll.polyfills.min.js"></script>
     <!-- Main theme script-->
     <script src="../js/theme.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

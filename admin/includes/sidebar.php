@@ -47,7 +47,7 @@
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="mpesac2b.php"><i class="ci-currency-exchange opacity-60 me-2"></i>Mpesa C2B</a></li>
 
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="mpesab2c.php"><i class="ci-currency-exchange opacity-60 me-2"></i>Mpesa B2C</a></li>
-                    <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="../index.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
+                    <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="logout.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
                   </ul>
                   <hr>
                 </div>

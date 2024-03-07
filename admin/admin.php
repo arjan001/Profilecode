@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+ include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -15,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href= "../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -25,14 +34,9 @@
     <link rel="stylesheet" media="screen" href="../vendor/chartist/dist/chartist.min.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+    <!-- <script src="../js/jquery.min.js"></script> -->
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -76,7 +80,7 @@
               <table class="table table-hover mb-0">
                 <thead>
                   <tr>
-                    <th>Image</th>
+                    <!-- <th>Image</th> -->
                     <th>Name</th>
                     <th>Phone</th>
                     <th>Email</th>
@@ -86,16 +90,26 @@
                 </thead>
                 <tbody>
 
+                <?php
+                            $chkusers = mysqli_query($con,"SELECT * FROM users WHERE typeId='1'");
+                            while($row = mysqli_fetch_assoc($chkusers)){  
+                  ?>
+
                   <tr>
-                    <td class="py-3 align-middle">Image</td>
-                    <td class="py-3 align-middle">Edwin Nyongesa</td>
-                    <td class="py-3 align-middle">0113626187</td>
-                    <td class="py-3 align-middle">arjannky@gmail.com</td>
-                    <td class="py-3 align-middle"><a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="Edit"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="Remove">
-                        <div class="ci-trash"></div></a></td>
+                    <!-- <td class="py-3 align-middle">Image</td> -->
+                    <td class="py-3 align-middle"><?php echo $row["first_name"]." ".$row["last_name"];?></td>
+                    <td class="py-3 align-middle"><?php echo $row["phone"];?></td>
+                    <td class="py-3 align-middle"><?php echo $row["email"];?></td>
+                    <td class="py-3 align-middle">
+
+                      <a class="nav-link-style me-2" href="#" data-id="<?php echo $row["id"];?>"  data-fname="<?php echo $row["first_name"];?>" data-lname="<?php echo $row["last_name"];?>" data-phone="<?php echo $row["phone"];?>" data-email="<?php echo $row["email"];?>"  data-bs-toggle="tooltip" title="Edit Admin"><i class="ci-edit"></i></a>
+                      
+                      <a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="Remove" id="<?php echo $row["id"];?>"><div class="ci-trash"></div></a>
+                    
+                    </td>
                   </tr>
                   
-                
+                  <?php }?>
                 </tbody>
               </table>
             </div>
@@ -112,6 +126,71 @@
     <!-- FOOTER SECTIONS STARTS  FROM HERE -->
 
     <?php include_once("includes/footerscripts-only.php") ?>
+
+    <script>
+
+$(function(){
+
+ $("#userfrm").submit(function(e){
+  e.preventDefault();
+  var id = $("#id").val();
+  var typeid = $("#typeid").val();
+  var fname = $("#fname").val();
+  var lname = $("#lname").val();
+  var phone = $("#phone").val();
+  var email = $("#email").val();
+  
+  $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the admin...</p>"); 
+  $.ajax({
+    method: "POST",
+    url: "app/users.php",
+    data: {
+      id:id,
+      typeid:typeid,
+      fname:fname,
+      lname:lname,
+      phone:phone,
+      email:email
+    },
+    cache:false
+  }).done(function(data){
+   if(data.status == 200){
+    $("#status").html("<p class='alert alert-success'><i class='fa fa-check'></i> Admin saved successfully.</p>").delay(5000);
+     window.location.replace($("#portal_url").html()+"admins");
+   }
+   if(data.status == 300){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> An error occured, please try again later.</p>");
+   }
+   if(data.status == 401){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> A user with this email address already exist. Use a different email.</p>");
+   }
+  });
+ });
+
+ //Deleting a admin
+ $(".deluser").click(function(){
+  var deluser = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this admin?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/users.php",
+      data:{
+        deluser:deluser
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"admins");
+      }
+    });
+    }
+   });
+ });
+</script>
 
     <!-- FOOTER SECTIONS ENDS FROM HERE -->
 

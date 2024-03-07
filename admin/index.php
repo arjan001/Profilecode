@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+ include_once("includes/config.php");
+//  include_once("includes/auth.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -74,56 +83,56 @@
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Customers</h3>
-                      <p class="h2 mb-2">8</p>
+                      <p class="h5 mb-2"><?php echo number_format(mysqli_num_rows(mysqli_query($con,"SELECT DISTINCT cphone FROM sales WHERe paid='1'")));?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">All Sales</h3>
-                      <p class="h2 mb-2">70</p>
+                      <p class="h5 mb-2"><?php echo number_format(mysqli_num_rows(mysqli_query($con,"SELECT * FROM sales")));?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Completed Sales</h3>
-                      <p class="h2 mb-2">110</p>
+                      <p class="h5 mb-2"><?php echo number_format(mysqli_num_rows(mysqli_query($con,"SELECT * FROM sales WHERE paid='1'")));?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Vendors</h3>
-                      <p class="h2 mb-2">10</p>
+                      <p class="h5 mb-2"><?php echo number_format(mysqli_num_rows(mysqli_query($con,"SELECT * FROM vendors WHERE status='1'")));?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Total Vendors Earnings</h3>
-                      <p class="h2 mb-2">471</p>
+                      <p class="h5 mb-2">Ksh. <?php echo number_format(mysqli_fetch_assoc(mysqli_query($con,"SELECT SUM(amount) AS ttearnings FROM vendorsales"))["ttearnings"],2);?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
-                      <h3 class="fs-sm text-muted">128</h3>
-                      <p class="h2 mb-2">70</p>
+                      <h3 class="fs-sm text-muted">Total Site Earnings</h3>
+                      <p class="h5 mb-2">Ksh. <?php echo number_format(mysqli_fetch_assoc(mysqli_query($con,"SELECT SUM(sitecommission) AS ttearnings FROM vendorsales"))["ttearnings"],2);?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">Total Vendors Balance</h3>
-                      <p class="h2 mb-2">6</p>
+                      <p class="h5 mb-2">Ksh. <?php echo number_format(mysqli_fetch_assoc(mysqli_query($con,"SELECT SUM(balance) AS totalbalance FROM vendors"))["totalbalance"],2);?></p>
                       
                     </div>
                   </div>
                   <div class="col-md-3 col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4 text-center">
                       <h3 class="fs-sm text-muted">B2C Balnces</h3>
-                      <p class="h2 mb-2">3853</p>
+                      <p class="h5 mb-2">Ksh. <?php echo number_format(mysqli_fetch_assoc(mysqli_query($con,"SELECT balance FROM mpesab2c_balance WHERE id='1'"))["balance"],2);?></p>
                       
                     </div>
                   </div>

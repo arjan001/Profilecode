@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php
+ob_start();
+session_start();
+
+include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <html lang="en">
   
 
@@ -89,22 +98,40 @@
                   </tr>
                 </thead>
                 <tbody>
+                          <?php
+          $chkpurchs = mysqli_query($con,"SELECT * FROM products ORDER BY id DESC");
+          while($row = mysqli_fetch_assoc($chkpurchs)){
+              $productid=$row["id"];
+              // $tailor=$row["tailor"];
+              $productcategory=$row["productcategory"];
+              $subcat1=$row["subcat1"];
+              $vendorid=$row["vendorid"];
+             
+          ?>
 
                   <tr>
-                    <td class="py-3 align-middle">Academic Files</td>
-                    <td class="py-3 align-middle">others</td>
-                    <td class="py-3 align-middle">Divine Mercy Product</td>
-                    <td class="py-3 align-middle">30</td>
-                    <td class="py-3 align-middle">Edwin N</td>
-                    <td class="py-3 align-middle">View File</td>
-                    <td class="py-3 align-middle">Divine Mercy Calendar 2024</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
+                    <td class="py-3 align-middle"><?php echo mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM categories WHERE id='$productcategory'"))['catname'];?></td>
+
+                    <td class="py-3 align-middle"> <?php echo mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM subcategories WHERE id='$subcat1'"))['subcatname'];?></td>
+
+                    <td class="py-3 align-middle"><a target="_blank" href="../product/<?php echo $row['url'] ?>"><?php echo $row["productname"];?></a></td>
+                    <td class="py-3 align-middle">Ksh. <?php echo number_format($row["productprice"]);?></td>
+                    <td class="py-3 align-middle"><?php
+               if($vendorid!="0"){
+                 echo mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM vendors WHERE id='$vendorid'"))["vname"];  
+               }else{
+                   echo "By Admin";
+               }
+               ?></td>
+                    <td class="py-3 align-middle"><a target="_blank" href="../docs/<?php echo $row['docs'] ?>">View File</a></td>
+                    <td class="py-3 align-middle"><?php echo $row["description"];?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y",strtotime($row["createdon"]));?></td>
                     
                     <td class="py-3 align-middle"><a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="Edit"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="Remove">
                         <div class="ci-trash"></div></a></td>
                   </tr>
                   
-                
+                <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -121,6 +148,134 @@
     <!-- FOOTER SECTIONS STARTS  FROM HERE -->
 
     <?php include_once("includes/footerscripts-only.php") ?>
+
+    <script>
+$(function(){
+ $("#prd").attr("class","active");
+ $('#tb_purchs').DataTable({"aaSorting":[]});
+ 
+   $("#productcategory").change(function(){
+     var categoryid = $(this).val();
+     $.ajax({
+        method: "POST",
+        url: "app/getsubcategories",
+        data: {categoryid:categoryid},
+        cache:false
+     }).done(function(data){
+        if(data != ""){
+         $("#subcat1").html(data);
+        }else{
+         $("#subcat1").html("No subcategories found");   
+        }
+     });
+    });
+
+
+ $("body").on("click",".edtpurch",function(){
+  $("#id").val($(this).attr("data-id"));
+  $("#productcategory").val($(this).attr("data-productcategory"));
+  $("#subcat1").val($(this).attr("data-subcat1"));
+  $("#productname").val($(this).attr("data-productname"));
+  $("#productprice").val($(this).attr("data-productprice"));
+  CKEDITOR.instances['description'].setData($(this).attr("data-description"))
+  
+  $("#theimage").hide();
+  $("#status").html("");
+  $(".item1").click();
+ });
+
+ $("#productfrm").submit(function(e){
+  e.preventDefault();
+  $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the product...</p>"); 
+  $.ajax({
+    method: "POST",
+    url: $("#portal_url").html()+"app/products",
+    data: new FormData(this),
+    cache:false,
+    contentType: false,
+    processData: false,
+  }).done(function(data){
+   if(data.status == 200){
+    $("#status").html("<p class='alert alert-success'><i class='fa fa-check'></i> product saved successfully.</p>").delay(5000);
+     window.location.replace($("#portal_url").html()+"products");
+   }
+   if(data.status == 300){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> An error occured, please try again later.</p>");
+   }
+  });
+ });
+
+ //Deleting a product
+ $(".delpurch").click(function(){
+  var delpurch = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this product?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/products",
+      data:{
+        delpurch:delpurch
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"products");
+      }
+    });
+    }
+   });
+   
+    //completeting a product
+ $(".markascomplete").click(function(){
+  var markascomplete = $(this).attr("id");
+  var d = confirm('Are you sure you want to mark this product as complete?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/products",
+      data:{
+        markascomplete:markascomplete
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"products");
+      }
+    });
+    }
+   });
+   
+   //Custom duration report
+  $("#filterform").submit(function(e){
+   e.preventDefault();
+   var date1 = $("#date1").val();
+   var date2 = $("#date2").val();
+   $("#filterform .btn").attr("disabled","disabled");
+   $("#filterstatus").html("<p class='alert alert-success' style='padding:10px;'><i class='fa fa-spinner fa-pulse'></i> Please wait....</p>");
+   $.ajax({
+    type: "POST",
+    url: $("#portal_url").html()+"reports/products",
+    data: {
+      date1:date1,
+      date2:date2
+    },
+    cache: false
+   }).done(function(data){
+    $("#filterform .btn").removeAttr("disabled");
+    $("#filterstatus").html("");
+    $(".dashboard").html(data);
+    $('#filtermodal').modal('toggle');
+    $('#tb_purchs').DataTable({"aaSorting": []});
+   });
+  });
+ });
+</script>
 
     <!-- FOOTER SECTIONS ENDS FROM HERE -->
 

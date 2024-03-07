@@ -1,3 +1,4 @@
+  
     <!-- MPESA WITHDRAW MODAL  modal -->
     
   <div class="modal fade" id="withdraw-modal" tabindex="-1" role="dialog">
@@ -57,13 +58,14 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="">
+                    <form role="form" id="userfrm" class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="" method="POST">
 
                         <div class="mb-3">
                         <label class="form-label" for="Fname">Fast name<span style="color: red;">*</span></label>
                             <br>
-                            
-                            <input class="form-control" type="text" id="Fname" placeholder="john"  required>
+                            <input type="hidden" id="id" value="">
+                            <input type="hidden" id="typeid" value="1">
+                            <input class="form-control" type="text" id="fname" placeholder="john"  required>
                             <div class="invalid-feedback">Name cant be blank</div>
                         </div>
 
@@ -71,7 +73,7 @@
                         <label class="form-label" for="Lname">Last  name<span style="color: red;">*</span></label>
                             <br>
                             
-                            <input class="form-control" type="text" id="Lname" placeholder="doe"  required>
+                            <input class="form-control" type="text" id="lname" placeholder="doe"  required>
                             <div class="invalid-feedback">Name cant be blank</div>
                         </div>
                         <div class="mb-3">
@@ -88,7 +90,10 @@
                             <div class="invalid-feedback">Please provide a valid email Address.</div>
                         </div>
 
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Withdraw</button>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Save Admin</button>
+
+
+
                     </form>
 
                 </div>
@@ -98,6 +103,65 @@
 
     <!-- ADD NEW ADMIN MODAL ENDS HERE -->
 
+
+    <!-- EDIT VENDOR MODAL BEGINS HERE  modal -->
+  <div class="modal fade"  id="vendormodal"  tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-secondary">
+                    <ul class="nav nav-tabs card-header-tabs" role="tablist">
+                        <li class="nav-item">
+                          <a class="nav-link fw-medium active"  data-bs-toggle="tab" role="tab" aria-selected="true"><i class="ci-unlocked me-2 mt-n1"></i>EDIT VENDOR PROFILE</a></li>
+                        
+
+                    </ul>
+                   
+                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body tab-content py-4">
+                    <form role="form" id="userfrm" class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="" method="POST">
+
+                        <div class="mb-3">
+                        <label class="form-label" for="Fname">NAMES *<span style="color: red;">*</span></label>
+                            <br>
+                            <input type="hidden" id="vid" name="vid" value="">
+                            <input class="form-control" type="text" id="fname" placeholder="john"  required>
+                            <div class="invalid-feedback">Name cant be blank</div>
+                        </div>
+
+                        <div class="mb-3">
+                        <label class="form-label" for="phone">Phone<span style="color: red;">*</span></label>
+                            <br>
+                            
+                            <input class="form-control" type="tel"  id="vphone" name="vphone" placeholder="0712345678"  required>
+                            <div class="invalid-feedback">Phone number cant be blank</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="amount">Email<span style="color: red;">*</span></label>
+                            <input class="form-control" type="email" id="vemail" name="vemail" placeholder="admin@gmail.com" required>
+                            <div class="invalid-feedback">Please provide a valid email Address.</div>
+                        </div>
+
+                        <div class="mb-3">
+                        <label class="form-label" for="phone">Balance<span style="color: red;">*</span></label>
+                            <br>
+                            
+                            <input class="form-control" type="text" id="vbalance" name="vbalance" placeholder="0712345678"  required>
+                            <div class="invalid-feedback">Phone number cant be blank</div>
+                        </div>
+
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Save Admin</button>
+
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- EDIT VENDOR MODAL MODAL ENDS HERE -->
 
        <!-- ADD NEW CATEGORY MODAL BEGINS HERE  modal -->
   <div class="modal fade" id="add-category-modal" tabindex="-1" role="dialog">
@@ -114,18 +178,19 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="">
+                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action=""  id="categoryfrm" method="POST">
 
                         <div class="mb-3">
                         <label class="form-label" for="Fname">Category Name<span style="color: red;">*</span></label>
                             <br>
-                            
-                            <input class="form-control" type="text" id="Fname" placeholder="john"  required>
+                            <input type="hidden" id="id" value="" name="id">
+                            <input class="form-control" type="text" id="catname" placeholder="category 1"  required>
                             <div class="invalid-feedback">Category Name cant be blank</div>
                         </div>
 
 
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">submit</button>
+
                     </form>
 
                 </div>
@@ -195,7 +260,7 @@
                   <div style="min-width: 14rem;">
                     <h6 class="dropdown-header">Account</h6><a class="dropdown-item d-flex align-items-center" href="settings.php"><i class="ci-settings opacity-60 me-2"></i>Settings</a>
                   
-                    <a class="dropdown-item d-flex align-items-center" href="../account-signin.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign Out</a>
+                    <a class="dropdown-item d-flex align-items-center" href="logout.php"><i class="ci-sign-out opacity-60 me-2"></i>Log Out</a>
                   </div>
                 </div>
               </div>
@@ -224,4 +289,8 @@
             </div>
           </div>
         </div>
+
+
+ 
+
       </header>

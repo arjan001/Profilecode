@@ -1,5 +1,5 @@
 <?php
-include_once("../../config/index.php");
+include_once("../includes/config.php");
 if(isset($_POST['categoryid'])){
 $mcode = $_POST["categoryid"];
 $cc=mysqli_query($con,"SELECT * FROM subcategories where catid='$mcode' ORDER BY subcatname ASC");

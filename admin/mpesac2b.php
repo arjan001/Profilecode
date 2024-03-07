@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -15,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -26,13 +35,7 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -88,66 +91,29 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                <?php
+        $chkpayments = mysqli_query($con,"SELECT * FROM mpesapayments ORDER BY id DESC");
+        while($row = mysqli_fetch_assoc($chkpayments)){ ?>
           
 
                 
                   <tr>
                     <td class="py-3 align-middle">
                       <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Edwin Nyongesa</span></div>
+                        <div class="ps-2"><span class="fw-medium text-heading me-1"><?php echo $row["first_name"] . " " . $row["middle_name"] . " " . $row["last_name"]; ?></span></div>
                       </div>
                     </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">838457</td>
-                    <td class="py-3 align-middle">Edwin</td>
-                    <td class="py-3 align-middle">Ksh 500</td>
-                    <td class="py-3 align-middle">SBO828LPJI</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Edwin Nyongesa</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">838457</td>
-                    <td class="py-3 align-middle">Edwin</td>
-                    <td class="py-3 align-middle">Ksh 500</td>
-                    <td class="py-3 align-middle">SBO828LPJI</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Edwin Nyongesa</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">838457</td>
-                    <td class="py-3 align-middle">Edwin</td>
-                    <td class="py-3 align-middle">Ksh 500</td>
-                    <td class="py-3 align-middle">SBO828LPJI</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Edwin Nyongesa</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">838457</td>
-                    <td class="py-3 align-middle">Edwin</td>
-                    <td class="py-3 align-middle">Ksh 500</td>
-                    <td class="py-3 align-middle">SBO828LPJI</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
+                    <td class="py-3 align-middle"><?php echo $row["phone"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo $row["paybill_no"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo $row["account_no"]; ?></td>
+                    <td class="py-3 align-middle">Ksh <?php echo number_format($row["amountpaid"]); ?></td>
+                    <td class="py-3 align-middle"><?php echo $row["mpesacode"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y H:i", strtotime($row["payment_date"])); ?></td>
                  
                   </tr>
 
+                <?php } ?>
                 </tbody>
               </table>
 

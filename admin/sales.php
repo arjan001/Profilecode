@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -15,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href= "../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -26,13 +35,7 @@
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -83,26 +86,51 @@
                     <th>Attachement</th>
                     <th>ACC No</th>
                     <th>Status</th>
-                    <th>created on</th>
+                    <th>Date</th>
                     
                   </tr>
                 </thead>
                 <tbody>
 
+             <?php
+             $chksales = mysqli_query($con,"SELECT sales.*,products.url,products.productname,products.productprice,products.docs FROM sales,products WHERE sales.productid=products.id ORDER BY sales.id DESC");
+             while($row = mysqli_fetch_assoc($chksales)){
+                 $vid=$row["id"];
+                 $paid=$row["paid"];
+             ?>
+
                   <tr>
-                    <td class="py-3 align-middle">jane@gmail.com</td>
-                    <td class="py-3 align-middle">0724100972</td>
-                    <td class="py-3 align-middle">Divine Mercy Product</td>
-                    <td class="py-3 align-middle">10</td>
-                    <td class="py-3 align-middle">View File </td>
-                    <td class="py-3 align-middle">FR1WUO</td>
-                    <td class="py-3 align-middle"><span class="badge bg-danger m-0">Not Paid</span></td>
-                    <td class="py-3 align-middle">27 Feb 2024</td>
+                    <td class="py-3 align-middle"><?php echo $row["cemail"];?></td>
+                    <td class="py-3 align-middle"><?php echo $row["cphone"];?></td>
+                    <td class="py-3 align-middle"><a target="_blank" href="../product/<?php echo $row['url'] ?>"><?php echo $row["productname"];?></a></td>
+                    <td class="py-3 align-middle">Ksh. <?php echo $row["productprice"];?></td>
+                    <td class="py-3 align-middle"><a target="_blank" href="../docs/<?php echo $row['docs'] ?>">View File</a></td>
+                    <td class="py-3 align-middle"><?php echo $row["accno"];?></td>
+
+
+                    
+                    <td class="py-3 align-middle">
+
+                                  
+                 <?php
+                                      if ($paid == "1") { ?>
+                                      <span class="badge bg-success m-0">Paid</span>
+                                    <?php } else { ?>
+                                      <span class="badge bg-danger m-0">Not Paid</span>
+                                    <?php } ?>
+                                  
+
+                      
+                    
+                    </td>
+
+
+                    <td class="py-3 align-middle"><?php echo date("d M Y",strtotime($row["createdon"]));?></td>
                     
                     
                   </tr>
                   
-                
+                <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -119,6 +147,60 @@
     <!-- FOOTER SECTIONS STARTS  FROM HERE -->
 
     <?php include_once("includes/footerscripts-only.php") ?>
+
+    <script>
+$(function(){
+ $("#sls").attr("class","active");
+ $('#tb_sales').DataTable({"aaSorting":[]});
+
+ //Deleting a customer
+ $(".delvendor").click(function(){
+  var delvendor = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this customer?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/customer",
+      data:{
+        delvendor:delvendor
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"customer");
+      }
+    });
+    }
+   });
+   
+   //Custom duration report
+  $("#filterform").submit(function(e){
+   e.preventDefault();
+   var date1 = $("#date1").val();
+   var date2 = $("#date2").val();
+   $("#filterform .btn").attr("disabled","disabled");
+   $("#filterstatus").html("<p class='alert alert-success' style='padding:10px;'><i class='fa fa-spinner fa-pulse'></i> Please wait....</p>");
+   $.ajax({
+    type: "POST",
+    url: $("#portal_url").html()+"reports/sales",
+    data: {
+      date1:date1,
+      date2:date2
+    },
+    cache: false
+   }).done(function(data){
+    $("#filterform .btn").removeAttr("disabled");
+    $("#filterstatus").html("");
+    $(".dashboard").html(data);
+    $('#filtermodal').modal('toggle');
+    $('#tb_sales').DataTable({"aaSorting": []});
+   });
+  });
+ });
+</script>
 
     <!-- FOOTER SECTIONS ENDS FROM HERE -->
 

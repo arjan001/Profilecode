@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -90,96 +99,48 @@
                   </tr>
                 </thead>
                 <tbody>
+
+              <?php
+             $chkearnings = mysqli_query($con,"SELECT vendorsales.*,products.url,products.productname,products.productprice,products.docs FROM vendorsales,products WHERE vendorsales.productid=products.id ORDER BY vendorsales.id DESC");
+             while($row = mysqli_fetch_assoc($chkearnings)){
+                 $vid=$row["id"];
+                 $vendorid=$row["vendorid"];
+                //  $paid=$row["paid"];
+                if($vendorid!="0"){
+                    $vendor=mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM vendors WHERE id='$vendorid'"));
+                    $vname=$vendor["vname"];
+                    $vphone=$vendor["vphone"];
+                }else{
+                   $vname="Admin"; 
+                   $vphone="";
+                }
+             ?>
           
 
                 
                   <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">Product 1</td>
-                    <td class="py-3 align-middle">View File</td>
-                    <td class="py-3 align-middle">24</td>
-                    <td class="py-3 align-middle">6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
                     
-                  </tr>
-                  <tr>
                     <td class="py-3 align-middle">
                       <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
+                        <div class="ps-2"><span class="fw-medium text-heading me-1"><?php echo $vname; ?></span></div>
                       </div>
                     </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">Product 1</td>
-                    <td class="py-3 align-middle">View File</td>
-                    <td class="py-3 align-middle">24</td>
-                    <td class="py-3 align-middle">6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
+                    <td class="py-3 align-middle"><?php echo $vphone; ?></td>
+                    <td class="py-3 align-middle"><a target="_blank" href="../product/<?php echo $row['url'] ?>">
+                      <?php echo $row["productname"]; ?>
+                    </a></td>
+                    <td class="py-3 align-middle"><a target="_blank" href="../docs/<?php echo $row['docs'] ?>">View File</a></td>
+                    <td class="py-3 align-middle">Ksh. <?php echo $row["amount"]; ?></td>
+                    <td class="py-3 align-middle">Ksh. <?php echo $row["sitecommission"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo $row["accno"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo $row["txncode"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y", strtotime($row["createdon"])); ?></td>
                     
                   </tr>
 
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">Product 1</td>
-                    <td class="py-3 align-middle">View File</td>
-                    <td class="py-3 align-middle">24</td>
-                    <td class="py-3 align-middle">6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">Product 1</td>
-                    <td class="py-3 align-middle">View File</td>
-                    <td class="py-3 align-middle">24</td>
-                    <td class="py-3 align-middle">6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">Susan Gardne</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">011234567</td>
-                    <td class="py-3 align-middle">Product 1</td>
-                    <td class="py-3 align-middle">View File</td>
-                    <td class="py-3 align-middle">24</td>
-                    <td class="py-3 align-middle">6</td>
-                    <td class="py-3 align-middle">ZD6GE7</td>
-                    <td class="py-3 align-middle">SBK2NHFHIM</td>
-                    <td class="py-3 align-middle">20 Feb 2024</td>
-                    
-                  </tr>
-
-
-                  
+                  <?php }?>
                 </tbody>
+
               </table>
 
               <!-- Pagination-->
@@ -215,6 +176,61 @@
     <!-- FOOTER SECTIONS STARTS  FROM HERE -->
 
     <?php include_once("includes/footerscripts-only.php") ?>
+
+
+    <script>
+$(function(){
+ $("#earn").attr("class","active");
+ $('#tb_earnings').DataTable({"aaSorting":[]});
+
+ //Deleting a customer
+ $(".delvendor").click(function(){
+  var delvendor = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this customer?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/customer",
+      data:{
+        delvendor:delvendor
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"customer");
+      }
+    });
+    }
+   });
+   
+   //Custom duration report
+  $("#filterform").submit(function(e){
+   e.preventDefault();
+   var date1 = $("#date1").val();
+   var date2 = $("#date2").val();
+   $("#filterform .btn").attr("disabled","disabled");
+   $("#filterstatus").html("<p class='alert alert-success' style='padding:10px;'><i class='fa fa-spinner fa-pulse'></i> Please wait....</p>");
+   $.ajax({
+    type: "POST",
+    url: $("#portal_url").html()+"reports/earnings",
+    data: {
+      date1:date1,
+      date2:date2
+    },
+    cache: false
+   }).done(function(data){
+    $("#filterform .btn").removeAttr("disabled");
+    $("#filterstatus").html("");
+    $(".dashboard").html(data);
+    $('#filtermodal').modal('toggle');
+    $('#tb_earnings').DataTable({"aaSorting": []});
+   });
+  });
+ });
+</script>
 
     <!-- FOOTER SECTIONS ENDS FROM HERE -->
 

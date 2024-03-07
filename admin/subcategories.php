@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+ include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -76,23 +85,36 @@
               <table class="table table-hover mb-0">
                 <thead>
                   <tr>
-                    <th>Sub Category Name</th>
+                    <th>SubCategory Namez</th>
+                    <th>Category Namez</th>
                     <th>Date Added</th>
-                    
                     <th>Action</th>
-                    <th></th>
+                    
                   </tr>
                 </thead>
                 <tbody>
+                        <?php
+          $chksubategory = mysqli_query($con,"SELECT * FROM subcategories ORDER BY id DESC");
+          while($row = mysqli_fetch_assoc($chksubategory)){
+             $catid=$row["catid"];
+          ?>
 
                   <tr>
-                    <td class="py-3 align-middle">Printable Calendars</td>
-                    <td class="py-3 align-middle">21 Dec 2023</td>
-                    <td class="py-3 align-middle"><a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="Edit"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="Remove">
+                    <td class="py-3 align-middle"><?php echo $row["subcatname"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM categories WHERE id='$catid'"))["catname"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y", strtotime($row["createdon"])); ?></td>
+
+
+                    <td class="py-3 align-middle">
+                      
+                    <a class="nav-link-style me-2" href="#" data-catid="<?php echo $row['catid'] ?>" data-subcatname="<?php echo $row['subcatname'] ?>" data-id="<?php echo $row["id"]; ?>" data-bs-toggle="tooltip" title="Edit subcategory"><i class="ci-edit"></i></a>
+
+                    <a class="nav-link-style text-danger" href="#" id="<?php echo $row["id"]; ?>" data-bs-toggle="tooltip" title="delete Subcategory">
+
                         <div class="ci-trash"></div></a></td>
                   </tr>
                   
-                
+                <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -109,6 +131,97 @@
     <!-- FOOTER SECTIONS STARTS  FROM HERE -->
 
     <?php include_once("includes/footerscripts-only.php") ?>
+
+
+<script>
+$(function(){
+ $("#subcat").attr("class","active");
+ $('#tb_subategory').DataTable({"aaSorting":[]});
+ 
+
+ $("body").on("click",".edtsubategory",function(){
+  $("#id").val($(this).attr("data-id"));
+  $("#subcatname").val($(this).attr("data-subcatname"));
+  $("#catid").val($(this).attr("data-catid"));
+  $("#status").html("");
+  $(".item1").click();
+ });
+
+ $("#subategoryfrm").submit(function(e){
+  e.preventDefault();
+  var id = $("#id").val();
+  var subcatname = $("#subcatname").val();
+  var catid = $("#catid").val();
+  
+  $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the subategory...</p>"); 
+  $.ajax({
+    method: "POST",
+    url: $("#portal_url").html()+"app/subcategories.php",
+    data: {
+      id:id,
+      subcatname:subcatname,
+      catid:catid
+    },
+    cache:false
+  }).done(function(data){
+   if(data.status == 200){
+    $("#status").html("<p class='alert alert-success'><i class='fa fa-check'></i> subategory saved successfully.</p>").delay(3000);
+     window.location.replace($("#portal_url").html()+"subcategories");
+   }
+   if(data.status == 300){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> An error occured, please try again later.</p>");
+   }
+  });
+ });
+
+ //Deleting a subategory
+ $(".delsubcategory").click(function(){
+  var delsubcategory = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this subategory?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/subcategories.php",
+      data:{
+        delsubcategory:delsubcategory
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"subcategories");
+      }
+    });
+    }
+   });
+   
+   //Custom duration report
+  $("#filterform").submit(function(e){
+   e.preventDefault();
+   var date1 = $("#date1").val();
+   var date2 = $("#date2").val();
+   $("#filterform .btn").attr("disabled","disabled");
+   $("#filterstatus").html("<p class='alert alert-success' style='padding:10px;'><i class='fa fa-spinner fa-pulse'></i> Please wait....</p>");
+   $.ajax({
+    type: "POST",
+    url: $("#portal_url").html()+"reports/subcategories.php",
+    data: {
+      date1:date1,
+      date2:date2
+    },
+    cache: false
+   }).done(function(data){
+    $("#filterform .btn").removeAttr("disabled");
+    $("#filterstatus").html("");
+    $(".dashboard").html(data);
+    $('#filtermodal').modal('toggle');
+    $('#tb_subategory').DataTable({"aaSorting": []});
+   });
+  });
+ });
+</script>
 
     <!-- FOOTER SECTIONS ENDS FROM HERE -->
 

@@ -27,7 +27,7 @@
                     
                     
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="withdrawals.php"><i class="ci-currency-exchange opacity-60 me-2"></i>Withdrawals</a></li>
-                    <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="account-signin.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
+                    <li class="mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="logout.php"><i class="ci-sign-out opacity-60 me-2"></i>Sign out</a></li>
                   </ul>
                   <hr>
                 </div>

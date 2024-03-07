@@ -28,9 +28,9 @@ if (!empty($url)) {
     <!-- Viewport-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon and Touch Icons-->
-    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
     <link rel="manifest" href="site.webmanifest">
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
@@ -62,7 +62,7 @@ if (!empty($url)) {
             <nav aria-label="breadcrumb">
               <ol class="breadcrumb flex-lg-nowrap justify-content-center justify-content-lg-start">
                 <li class="breadcrumb-item"><a class="text-nowrap" href="index.php"><i class="ci-home"></i>Home</a></li>
-                <li class="breadcrumb-item text-nowrap active" aria-current="page">Contacts</li>
+                <li class="breadcrumb-item text-nowrap active" aria-current="page">SHOP</li>
               </ol>
             </nav>
           </div>
@@ -390,8 +390,9 @@ if (!empty($url)) {
           </div>
         </div>
       </section>
+      
       <!-- Shop by brand-->
-      <section class="container py-lg-4 mb-4">
+      <!-- <section class="container py-lg-4 mb-4">
         <h2 class="h3 text-center pb-4">Shop by SubCategory</h2>
         <div class="row">
 
@@ -403,11 +404,11 @@ if (!empty($url)) {
 
           <div class="col-md-3 col-sm-4 col-6"><a class="d-block bg-white shadow-sm rounded-3 py-3 py-sm-4 mb-grid-gutter" href="#"><img class="d-block mx-auto" src="img/shop/catalog/dummy.png" style="width: 150px;" alt="Brand"></a></div>
 
-          <!-- <div class="col-md-3 col-sm-4 col-6"><a class="d-block bg-white shadow-sm rounded-3 py-3 py-sm-4 mb-grid-gutter" href="#"><img class="d-block mx-auto" src="img/shop/brands/04.png" style="width: 150px;" alt="Brand"></a></div> -->
+       
 
  
         </div>
-      </section>
+      </section> -->
       <!-- Blog + Instagram info cards-->
       <section class="container-fluid px-0">
         <div class="row g-0">
@@ -428,6 +429,34 @@ if (!empty($url)) {
 
      <!-- footer section code was removed here -->
   <?php include_once("includes/footer.php") ?>
+
+  <script>
+              $('#defaultcontent').on('click', '.addtocart', function(){
+            var productid=$(this).attr("id");
+            var sessionid="<?php echo $sessionid ?>"
+            $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
+            $.ajax({
+            
+            url:"app/addtocart.php",
+            method:"POST",
+            data:{productid:productid,sessionid:sessionid},
+            success: 
+            function(returnhtml){
+            if(returnhtml=="success"){
+            $("#status").fadeIn(1);
+            $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product Added to cart </div>");
+            $('.hi1').load(document.URL +  ' .hi1');
+            $("#status").fadeOut(3000);
+            }else{
+            $("#status").fadeIn(1);
+            $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error adding product to cart</div>");
+            $('.hi1').load(document.URL +  ' .hi1');
+            $("#status").fadeOut(3000);
+            }
+            }
+            })
+            });
+          </script>
 
   </body>
 

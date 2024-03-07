@@ -14,23 +14,32 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="">
+                    <form  class="needs-validation tab-pane fade show active" autocomplete="off"  id="withdrawfrm" enctype="multipart/form-data" method="post">
 
                         <div class="mb-3">
                         <label class="form-label" for="phone">Phone Number <span style="color: red;">*</span></label>
                             <br>
                             <small>To change mpesa number please contact admin 0769401004)</small>
-                            <input class="form-control" type="phone" id="phone" placeholder="0712345678" value="0798325459" readonly required>
+                            <input class="form-control" type="phone" id="vphone" name="vphone" value="<?php echo $vendorphone ?>" placeholder="0712345678"   required>
                             <div class="invalid-feedback">Please provide a valid Safaricom Number</div>
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label" for="amount">Amount<span style="color: red;">*</span></label>
-                            <input class="form-control" type="number" id="amount" placeholder="" required>
+                            <input type="hidden" value="<?php echo $vendorbalance ?>" name="vbalance" id="vbalance">
+                            <input type="hidden" value="<?php echo $vendorid ?>" name="vid" id="vid">
+
+                            <input class="form-control" type="number" id="vamount" name="vamount" min="10" max="<?php echo $vendorbalance ?>" placeholder="" required>
                             <div class="invalid-feedback">Please provide an Amount to withdraw.</div>
                         </div>
-
+                        <p>* Minimum withdrawal amount is Ksh. 10</p>
                         <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Withdraw</button>
+
+                         <!-- NOTIFICATION POP UP BOX -->
+                              <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
+                          <div id="status"></div>
+                         </div>
+                           <!-- NOTIFICATION POP UP BOX -->
                     </form>
 
                 </div>

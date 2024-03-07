@@ -1,3 +1,12 @@
+<?php
+ob_start();
+session_start();
+
+ include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -15,7 +24,7 @@
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href= "../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -25,14 +34,9 @@
     <link rel="stylesheet" media="screen" href="../vendor/chartist/dist/chartist.min.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+    
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -84,15 +88,25 @@
                   </tr>
                 </thead>
                 <tbody>
+                <?php
+          $chkcategory = mysqli_query($con,"SELECT * FROM categories ORDER BY id DESC");
+          while($row = mysqli_fetch_assoc($chkcategory)){
+             
+          ?>
 
                   <tr>
-                    <td class="py-3 align-middle">Printable Calendars</td>
-                    <td class="py-3 align-middle">21 Dec 2023</td>
-                    <td class="py-3 align-middle"><a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="Edit"><i class="ci-edit"></i></a><a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="Remove">
+                    <td class="py-3 align-middle"><?php echo $row["catname"];?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y",strtotime($row["createdon"]));?></td>
+
+                    <td class="py-3 align-middle">
+
+                      <a class="nav-link-style me-2" href="#" data-bs-toggle="tooltip" title="Edit" data-catname="<?php echo $row['catname'] ?>" data-id="<?php echo $row["id"];?>"><i class="ci-edit"></i></a>
+                      
+                      <a class="nav-link-style text-danger" href="#"  id="<?php echo $row["id"];?>" data-bs-toggle="tooltip" title="Remove">
                         <div class="ci-trash"></div></a></td>
                   </tr>
                   
-                
+                  <?php } ?>
                 </tbody>
               </table>
             </div>
@@ -109,6 +123,94 @@
     <!-- FOOTER SECTIONS STARTS  FROM HERE -->
 
     <?php include_once("includes/footerscripts-only.php") ?>
+
+
+ <script>
+$(function(){
+ $("#cat").attr("class","active");
+ $('#tb_category').DataTable({"aaSorting":[]});
+ 
+
+ $("body").on("click",".edtcategory",function(){
+  $("#id").val($(this).attr("data-id"));
+  $("#catname").val($(this).attr("data-catname"));
+  $("#status").html("");
+  $(".item1").click();
+ });
+
+ $("#categoryfrm").submit(function(e){
+  e.preventDefault();
+  var id = $("#id").val();
+  var catname = $("#catname").val();
+  
+  $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the category...</p>"); 
+  $.ajax({
+    method: "POST",
+    url: $("#portal_url").html()+"app/categories.php",
+    data: {
+      id:id,
+      catname:catname
+    },
+    cache:false
+  }).done(function(data){
+   if(data.status == 200){
+    $("#status").html("<p class='alert alert-success'><i class='fa fa-check'></i> category saved successfully.</p>").delay(3000);
+     window.location.replace($("#portal_url").html()+"categories");
+   }
+   if(data.status == 300){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> An error occured, please try again later.</p>");
+   }
+  });
+ });
+
+ //Deleting a category
+ $(".delcategory").click(function(){
+  var delcategory = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this category?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/categories.php",
+      data:{
+        delcategory:delcategory
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"categories");
+      }
+    });
+    }
+   });
+   
+   //Custom duration report
+  $("#filterform").submit(function(e){
+   e.preventDefault();
+   var date1 = $("#date1").val();
+   var date2 = $("#date2").val();
+   $("#filterform .btn").attr("disabled","disabled");
+   $("#filterstatus").html("<p class='alert alert-success' style='padding:10px;'><i class='fa fa-spinner fa-pulse'></i> Please wait....</p>");
+   $.ajax({
+    type: "POST",
+    url: $("#portal_url").html()+"reports/categories.php",
+    data: {
+      date1:date1,
+      date2:date2
+    },
+    cache: false
+   }).done(function(data){
+    $("#filterform .btn").removeAttr("disabled");
+    $("#filterstatus").html("");
+    $(".dashboard").html(data);
+    $('#filtermodal').modal('toggle');
+    $('#tb_category').DataTable({"aaSorting": []});
+   });
+  });
+ });
+</script>
 
     <!-- FOOTER SECTIONS ENDS FROM HERE -->
 

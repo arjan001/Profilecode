@@ -1,3 +1,13 @@
+<?php
+ob_start();
+session_start();
+
+include_once("includes/config.php");
+//  include_once("includes/auth.php");
+$now = date('Y-m-d H:i:s');
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   
@@ -86,74 +96,31 @@
                   </tr>
                 </thead>
                 <tbody>
+
+                            <?php
+                            $chkpayments = mysqli_query($con,"SELECT * FROM mpesab2c ORDER BY id DESC");
+                            while($row = mysqli_fetch_assoc($chkpayments)){ ?>
           
 
                 
                   <tr>
                     <td class="py-3 align-middle">
                       <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">sammy collins</span></div>
+                        <div class="ps-2"><span class="fw-medium text-heading me-1"><?php echo $row["name"]; ?></span></div>
                       </div>
                     </td>
-                    <td class="py-3 align-middle">25471123457</td>
-                    <td class="py-3 align-middle">ksh 120</td>
-                    <td class="py-3 align-middle">SBR9C2SJHL</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
+                    <td class="py-3 align-middle"><?php echo $row["phone"]; ?></td>
+                    <td class="py-3 align-middle">Ksh <?php echo $row["amount"]; ?></td>
+                    <td class="py-3 align-middle"><?php echo $row["txncode"];?></td>
+                    <td class="py-3 align-middle"><?php echo date("d M Y H:i", strtotime($row["transtime"])); ?></td>
                  
                   </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">sammy collins</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">25471123457</td>
-                    <td class="py-3 align-middle">ksh 120</td>
-                    <td class="py-3 align-middle">SBR9C2SJHL</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">sammy collins</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">25471123457</td>
-                    <td class="py-3 align-middle">ksh 120</td>
-                    <td class="py-3 align-middle">SBR9C2SJHL</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">sammy collins</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">25471123457</td>
-                    <td class="py-3 align-middle">ksh 120</td>
-                    <td class="py-3 align-middle">SBR9C2SJHL</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
-                  <tr>
-                    <td class="py-3 align-middle">
-                      <div class="d-flex align-items-center">
-                        <div class="ps-2"><span class="fw-medium text-heading me-1">sammy collins</span></div>
-                      </div>
-                    </td>
-                    <td class="py-3 align-middle">25471123457</td>
-                    <td class="py-3 align-middle">ksh 120</td>
-                    <td class="py-3 align-middle">SBR9C2SJHL</td>
-                    <td class="py-3 align-middle">24 Feb 2024 15:53</td>
-                 
-                  </tr>
+
 
 
                  
               
-
+                  <?php }?>
                 </tbody>
               </table>
 

@@ -145,6 +145,11 @@
                         </div>
                     </div>
                 </div>
+                          <!-- NOTIFICATION POP UP BOX -->
+                          <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
+                          <div id="status"></div>
+                         </div>
+                           <!-- NOTIFICATION POP UP BOX -->
 
                 <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
                     <div class="container">
@@ -235,8 +240,6 @@
 
                                 <li class="nav-item dropdown"><a class="nav-link " href="about.php" >How it Works</a></li>
 
-                                <li class="nav-item dropdown"><a class="nav-link " href="./seller/index.php" >Vendor Demo Page</a></li>
-
                                 <li class="nav-item dropdown"><a class="nav-link " href="./admin/index.php" >Admin Demo Page</a></li>
 
                             </ul>
@@ -244,10 +247,6 @@
                     </div>
                 </div>
             </div>
+
                           </header>
 
-                            <!-- NOTIFICATION POP UP BOX -->
-                             <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
-                          <div id="status"></div>
-                         </div>
-                           <!-- NOTIFICATION POP UP BOX -->

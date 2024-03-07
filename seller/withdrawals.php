@@ -33,6 +33,9 @@ session_start();
     <link rel="stylesheet" media="screen" href="../vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
+    
+    <script src="../js/jquery-3.7.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Google Tag Manager-->
 
   </head>
@@ -147,6 +150,111 @@ session_start();
 
       <?php include_once("includes/footerscripts-only.php") ?>
 
+
+
+      
+<script>
+$(function(){
+ $("#withd").attr("class","active");
+ $('#tb_purchs').DataTable({"aaSorting":[]});
+
+
+ $("#withdrawfrm").submit(function(e){
+  e.preventDefault();
+  
+  $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Submitting withdrawal request... Please wait</p>"); 
+  $.ajax({
+    method: "POST",
+    url: $("#portal_url").html()+"app/withdraw.php",
+    data: new FormData(this),
+    cache:false,
+    contentType: false,
+    processData: false,
+  }).done(function(data){
+   if(data.status == 200){
+    $("#status").html("<p class='alert alert-success'><i class='fa fa-check'></i> withdrawal successful. Please wait for mpesa message</p>").delay(5000);
+     window.location.replace($("#portal_url").html()+"withdraw");
+   }
+   if(data.status == 201){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> Your balance is less than amount you want to withdraw.</p>");
+   }
+   if(data.status == 300){
+    $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> An error occured, please try again later.</p>");
+   }
+  });
+ });
+
+ //Deleting a withdraw
+ $(".delpurch").click(function(){
+  var delpurch = $(this).attr("id");
+  var d = confirm('Are you sure you want to delete this withdraw?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/withdrawals.php",
+      data:{
+        delpurch:delpurch
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"withdrawals");
+      }
+    });
+    }
+   });
+   
+    //completeting a withdraw
+ $(".markascomplete").click(function(){
+  var markascomplete = $(this).attr("id");
+  var d = confirm('Are you sure you want to mark this withdraw as complete?');
+  if(d == false){
+   return false;
+  }
+  else{
+    $.ajax({
+      method:"post",
+      url: $("#portal_url").html()+"app/withdrawals.php",
+      data:{
+        markascomplete:markascomplete
+      },
+      cache:false
+    }).done(function(data){
+      if(data.status == "200"){
+       window.location.replace($("#portal_url").html()+"withdrawals");
+      }
+    });
+    }
+   });
+   
+  //  //Custom duration report
+  // $("#filterform").submit(function(e){
+  //  e.preventDefault();
+  //  var date1 = $("#date1").val();
+  //  var date2 = $("#date2").val();
+  //  $("#filterform .btn").attr("disabled","disabled");
+  //  $("#filterstatus").html("<p class='alert alert-success' style='padding:10px;'><i class='fa fa-spinner fa-pulse'></i> Please wait....</p>");
+  //  $.ajax({
+  //   type: "POST",
+  //   url: $("#portal_url").html()+"reports/withdrawals",
+  //   data: {
+  //     date1:date1,
+  //     date2:date2
+  //   },
+  //   cache: false
+  //  }).done(function(data){
+  //   $("#filterform .btn").removeAttr("disabled");
+  //   $("#filterstatus").html("");
+  //   $(".dashboard").html(data);
+  //   $('#filtermodal').modal('toggle');
+  //   $('#tb_purchs').DataTable({"aaSorting": []});
+  //  });
+  // });
+ });
+</script>
 <!-- FOOTER SECTIONS ENDS FROM HERE -->
 
   </body>
