@@ -15,7 +15,7 @@ session_start();
 
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Sales</title>
+    <title>PROFILECODE| Sales |Profile Code KE</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Profile Code KE |Leading File MarketPlace |PROFILECODE">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
