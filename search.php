@@ -90,19 +90,19 @@ if(isset($_POST['searchproduct'])){
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card">
               <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="products/<?php echo $lp['productimage'] ?>" alt="<?php echo $lp['productname'] ?>"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SEARCHED PRODUCT</a>
+              <div class="card-body py-2">
+                <a class="product-meta d-block fs-xs pb-1" href="#"><?php echo $lp['catname'] ?></a>
                 <h3 class="product-title fs-sm"><a href="single-product.php"><?php echo $lp['productname'] ?></a></h3>
                 <div class="d-flex justify-content-between">
                   <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?> </span></div>
-                  <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                  </div>
+
                 </div>
               </div>
-              <div class="card-body card-body-hidden">
+              
 
                 <button class="btn btn-primary btn-sm d-block w-100 mb-2 addtocart" type="button"id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
                 
-              </div>
+             
             </div>
             <hr class="d-sm-none">
 
