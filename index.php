@@ -441,39 +441,39 @@ include_once("config/index.php");
   <!-- footer section code was removed here -->
   <?php include_once("includes/footer.php") ?>
 
-  <script>
-           $('#defaultcontent').on('click', '.addtocart', function(){
-            var productid=$(this).attr("id");
-            var sessionid="<?php echo $sessionid ?>"
-            $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
-            $.ajax({
-            
-            url:"app/addtocart.php",
-            method:"POST",
-            data:{productid:productid,sessionid:sessionid},
-            success: 
-            function(returnhtml){
-            if(returnhtml=="success"){
-            $("#status").fadeIn(1);
-            $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product Added to cart </div>");
-            $('.hi1').load(document.URL +  ' .hi1');
-            $("#status").fadeOut(3000);
-            }else{
-            $("#status").fadeIn(1);
-            $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error adding product to cart</div>");
-            $('.hi1').load(document.URL +  ' .hi1');
-            $("#status").fadeOut(3000);
-            }
-          }
-          
-            })
-            });
 
- </script>
 
 <!-- LOGIN SIGNUP AJAX SCRIPT STARTS HERE -->
 <script>
             $(function() {
+
+           $('#defaultcontent').on('click', '.addtocart', function(){
+            var productid=$(this).attr("id");
+            var sessionid="<?php echo $sessionid ?>"
+                $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
+                $.ajax({
+
+                  url: "app/addtocart.php",
+                  method: "POST",
+                  data: { productid: productid, sessionid: sessionid },
+                  success:
+                    function (returnhtml) {
+                      if (returnhtml == "success") {
+                        $("#status").fadeIn(1);
+                        $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product Added to cart </div>");
+                        $('.hi1').load(document.URL + ' .hi1');
+                        $("#status").fadeOut(3000);
+                      } else {
+                        $("#status").fadeIn(1);
+                        $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error adding product to cart</div>");
+                        $('.hi1').load(document.URL + ' .hi1');
+                        $("#status").fadeOut(3000);
+                      }
+                    }
+
+                })
+              });
+
              $("#loginfrm").submit(function(e){
                e.preventDefault();
                 $("#status").html("<p class='alert alert-success'><i class='fas fa-spinner fa-pulse'></i> Logging in...</p>");

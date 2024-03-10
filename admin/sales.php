@@ -3,7 +3,7 @@ ob_start();
 session_start();
 
 include_once("includes/config.php");
-//  include_once("includes/auth.php");
+ include_once("includes/auth.php");
 $now = date('Y-m-d H:i:s');
 
 ?>
@@ -15,7 +15,7 @@ $now = date('Y-m-d H:i:s');
     <meta charset="utf-8">
     <title>PROFILECODE| Sales | View Sales </title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="PROFILECODE- Bootstrap E-commerce Template">
+    <meta name="description" content="PROFILECODE- Profile Code KE |Leading File MarketPlace |PROFILECODE">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
     <meta name="author" content="ProfileCode">
     <!-- Viewport-->
@@ -150,8 +150,8 @@ $now = date('Y-m-d H:i:s');
 
     <script>
 $(function(){
- $("#sls").attr("class","active");
- $('#tb_sales').DataTable({"aaSorting":[]});
+//  $("#sls").attr("class","active");
+//  $('#tb_sales').DataTable({"aaSorting":[]});
 
  //Deleting a customer
  $(".delvendor").click(function(){

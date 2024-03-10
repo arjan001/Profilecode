@@ -3,7 +3,7 @@ ob_start();
 session_start();
 
  include_once("includes/config.php");
-//  include_once("includes/auth.php");
+ include_once("includes/auth.php");
 $now = date('Y-m-d H:i:s');
 
 ?>
@@ -24,7 +24,7 @@ $now = date('Y-m-d H:i:s');
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href= "../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -35,13 +35,7 @@ $now = date('Y-m-d H:i:s');
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -85,11 +79,10 @@ $now = date('Y-m-d H:i:s');
               <table class="table table-hover mb-0">
                 <thead>
                   <tr>
-                    <th>SubCategory Namez</th>
-                    <th>Category Namez</th>
+                    <th>SubCategory</th>
+                    <!-- <th>Category</th> -->
                     <th>Date Added</th>
-                    <th>Action</th>
-                    
+                    <th>Action</th>  
                   </tr>
                 </thead>
                 <tbody>
@@ -99,23 +92,26 @@ $now = date('Y-m-d H:i:s');
              $catid=$row["catid"];
           ?>
 
-                  <tr>
-                    <td class="py-3 align-middle"><?php echo $row["subcatname"]; ?></td>
-                    <td class="py-3 align-middle"><?php echo mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM categories WHERE id='$catid'"))["catname"]; ?></td>
-                    <td class="py-3 align-middle"><?php echo date("d M Y", strtotime($row["createdon"])); ?></td>
+                <tr>
+
+                 <td class="py-3 align-middle"><?php echo $row["subcatname"]; ?></td>
+                 <!-- <td class="py-3 align-middle"><?php echo mysqli_fetch_assoc(mysqli_query($con,"SELECT * FROM categories WHERE id='$catid'"))["catname"]; ?></td> -->
+                 <td class="py-3 align-middle"><?php echo date("d M Y", strtotime($row["createdon"])); ?></td>
 
 
                     <td class="py-3 align-middle">
                       
                     <a class="nav-link-style me-2" href="#" data-catid="<?php echo $row['catid'] ?>" data-subcatname="<?php echo $row['subcatname'] ?>" data-id="<?php echo $row["id"]; ?>" data-bs-toggle="tooltip" title="Edit subcategory"><i class="ci-edit"></i></a>
 
-                    <a class="nav-link-style text-danger" href="#" id="<?php echo $row["id"]; ?>" data-bs-toggle="tooltip" title="delete Subcategory">
-
-                        <div class="ci-trash"></div></a></td>
+                    <a class="nav-link-style text-danger" href="#" id="<?php echo $row["id"]; ?>" data-bs-toggle="tooltip" title="delete Subcategory"><div class="ci-trash"></div></a>
+                      
+                  </td>
+                  
                   </tr>
                   
                 <?php } ?>
-                </tbody>
+
+           </tbody>
               </table>
             </div>
             
@@ -135,8 +131,8 @@ $now = date('Y-m-d H:i:s');
 
 <script>
 $(function(){
- $("#subcat").attr("class","active");
- $('#tb_subategory').DataTable({"aaSorting":[]});
+//  $("#subcat").attr("class","active");
+//  $('#tb_subategory').DataTable({"aaSorting":[]});
  
 
  $("body").on("click",".edtsubategory",function(){
@@ -156,7 +152,7 @@ $(function(){
   $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the subategory...</p>"); 
   $.ajax({
     method: "POST",
-    url: $("#portal_url").html()+"app/subcategories.php",
+    url: "app/subcategories.php",
     data: {
       id:id,
       subcatname:subcatname,

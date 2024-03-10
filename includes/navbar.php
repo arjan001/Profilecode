@@ -90,7 +90,7 @@
                 <div class="container">
                     <div class="topbar-text dropdown d-md-none"><a class="topbar-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Useful links</a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="tel:00331697720"><i class="ci-support text-muted me-2"></i>(00) 33 169 7720</a></li>
+                            <li><a class="dropdown-item" href="tel:00331697720"><i class="ci-support text-muted me-2"></i>(+254)769401004</a></li>
                             <li><a  class="dropdown-item hidden" href="#"><i class="ci-location text-muted me-2"></i>  </a></li>
                         </ul>
                     </div>
@@ -145,11 +145,7 @@
                         </div>
                     </div>
                 </div>
-                          <!-- NOTIFICATION POP UP BOX -->
-                          <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
-                          <div id="status"></div>
-                         </div>
-                           <!-- NOTIFICATION POP UP BOX -->
+
 
                 <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
                     <div class="container">
@@ -240,13 +236,22 @@
 
                                 <li class="nav-item dropdown"><a class="nav-link " href="about.php" >How it Works</a></li>
 
-                                <li class="nav-item dropdown"><a class="nav-link " href="./admin/index.php" >Admin Demo Page</a></li>
+                                
 
                             </ul>
-                        </div>
+
+                            
+                        </div> 
                     </div>
+                    
                 </div>
+                
             </div>
+                         <!-- NOTIFICATION POP UP BOX -->
+                          <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
+                          <div id="status"></div>
+                         </div>
+                           <!-- NOTIFICATION POP UP BOX -->
 
                           </header>
 

@@ -3,7 +3,7 @@ ob_start();
 session_start();
 
  include_once("includes/config.php");
-//  include_once("includes/auth.php");
+ include_once("includes/auth.php");
 $now = date('Y-m-d H:i:s');
 
 ?>
@@ -127,8 +127,8 @@ $now = date('Y-m-d H:i:s');
 
  <script>
 $(function(){
- $("#cat").attr("class","active");
- $('#tb_category').DataTable({"aaSorting":[]});
+//  $("#cat").attr("class","active");
+//  $('#tb_category').DataTable({"aaSorting":[]});
  
 
  $("body").on("click",".edtcategory",function(){
@@ -146,7 +146,7 @@ $(function(){
   $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the category...</p>"); 
   $.ajax({
     method: "POST",
-    url: $("#portal_url").html()+"app/categories.php",
+    url:"app/categories.php",
     data: {
       id:id,
       catname:catname
@@ -155,7 +155,8 @@ $(function(){
   }).done(function(data){
    if(data.status == 200){
     $("#status").html("<p class='alert alert-success'><i class='fa fa-check'></i> category saved successfully.</p>").delay(3000);
-     window.location.replace($("#portal_url").html()+"categories");
+    //  window.location.replace($("#portal_url").html()+"categories");
+     window.location.replace('categories.php');
    }
    if(data.status == 300){
     $("#status").html("<p class='alert alert-danger'><i class='fa fa-exclamation-circle'></i> An error occured, please try again later.</p>");

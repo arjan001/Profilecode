@@ -16,7 +16,7 @@ if(isset($_POST['searchproduct'])){
 
 <head>
     <meta charset="utf-8">
-    <title><?php echo $searchproduct ?> | PROFILECODE| Shop grid filters on top</title>
+    <title><?php echo $searchproduct ?> | PROFILECODE| Shop |File & Folders|Search Page</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Leading Digital File Marketplace">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -27,7 +27,7 @@ if(isset($_POST['searchproduct'])){
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -38,6 +38,7 @@ if(isset($_POST['searchproduct'])){
     <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <!-- Google Tag Manager-->
 
   </head>
@@ -75,7 +76,7 @@ if(isset($_POST['searchproduct'])){
           </div>
         </div>
       </div>
-      <div class="container pb-5 mb-2 mb-md-4">
+      <div class="container pb-5 mb-2 mb-md-4" id="defaultcontent">
 
         <!-- Products grid-->
         <div class="row pt-3 mx-n2">
@@ -99,7 +100,7 @@ if(isset($_POST['searchproduct'])){
               </div>
               <div class="card-body card-body-hidden">
 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button"  id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <button class="btn btn-primary btn-sm d-block w-100 mb-2 addtocart" type="button"id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
                 
               </div>
             </div>
@@ -149,6 +150,37 @@ if(isset($_POST['searchproduct'])){
     
     <!-- footer section code was removed here -->
   <?php include_once("includes/footer.php") ?>
+
+
+  <script>
+           $('#defaultcontent').on('click', '.addtocart', function(){
+            var productid=$(this).attr("id");
+            var sessionid="<?php echo $sessionid ?>"
+      $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
+      $.ajax({
+
+        url: "app/addtocart.php",
+        method: "POST",
+        data: { productid: productid, sessionid: sessionid },
+        success:
+          function (returnhtml) {
+            if (returnhtml == "success") {
+              $("#status").fadeIn(1);
+              $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product Added to cart </div>");
+              $('.hi1').load(document.URL + ' .hi1');
+              $("#status").fadeOut(3000);
+            } else {
+              $("#status").fadeIn(1);
+              $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error adding product to cart</div>");
+              $('.hi1').load(document.URL + ' .hi1');
+              $("#status").fadeOut(3000);
+            }
+          }
+
+      })
+    });
+
+  </script>
 
 
   </body>

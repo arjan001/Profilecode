@@ -15,7 +15,7 @@ $now = date('Y-m-d H:i:s');
     <meta charset="utf-8">
     <title>PROFILECODE| Products</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="PROFILECODE- Bootstrap E-commerce Template">
+    <meta name="description" content="PROFILECODE- Profile Code KE |Leading File MarketPlace |PROFILECODE">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
     <meta name="author" content="ProfileCode">
     <!-- Viewport-->
@@ -24,7 +24,7 @@ $now = date('Y-m-d H:i:s');
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href= "../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -35,13 +35,7 @@ $now = date('Y-m-d H:i:s');
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -151,8 +145,8 @@ $now = date('Y-m-d H:i:s');
 
     <script>
 $(function(){
- $("#prd").attr("class","active");
- $('#tb_purchs').DataTable({"aaSorting":[]});
+//  $("#prd").attr("class","active");
+//  $('#tb_purchs').DataTable({"aaSorting":[]});
  
    $("#productcategory").change(function(){
      var categoryid = $(this).val();

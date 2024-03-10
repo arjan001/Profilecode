@@ -9,9 +9,9 @@ include_once("config/index.php");
   
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Multipurpose Bootstrap E-commerce Template</title>
+    <title>PROFILECODE| About page |About ProfileCode</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="PROFILECODE- Bootstrap E-commerce Template">
+    <meta name="description" content="PROFILECODE-  E-commerce File shop">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
     <meta name="author" content="ProfileCode">
     <!-- Viewport-->
@@ -20,7 +20,7 @@ include_once("config/index.php");
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -30,13 +30,7 @@ include_once("config/index.php");
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
   <body class="handheld-toolbar-enabled">
@@ -91,7 +85,8 @@ Vendors’ earnings can be withdrawn to their BANK ACCOUNT within 12 hours. As a
             <div class="mx-auto py-lg-5" style="max-width: 35rem;">
               <h2 class="h3 pb-3">Customer. Instant Downloads</h2>
               <p class="fs-sm pb-3 text-muted">Whether it’s research material for an upcoming project or templates to streamline your workflow, or seeking cutting-edge marketing assets we’ve got you covered. Sign up today and take advantage of our diverse collection of files tailored specifically for professionals like YOU!
-Customers are guaranteed access to an extensive range of high-quality digital resources that will save them time and enhance their productivity. No matter what industry or niche you’re working in, our diverse selection of resources will help elevate your work to new heights</p><a class="btn-market btn-apple me-3 mb-3" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">App Store</span></a><a class="btn-market btn-google mb-3" href="#" role="button"><span class="btn-market-subtitle">Download on the</span><span class="btn-market-title">Google Play</span></a>
+Customers are guaranteed access to an extensive range of high-quality digital resources that will save them time and enhance their productivity. No matter what industry or niche you’re working in, our diverse selection of resources will help elevate your work to new heights</p>
+
             </div>
           </div>
         </section>
@@ -154,32 +149,7 @@ Customers are guaranteed access to an extensive range of high-quality digital re
         </section>
         <!-- Section: We are hiring-->
         <hr>
-        <section class="row g-0">
-          <div class="col-md-6 bg-position-center bg-size-cover bg-secondary order-md-2" style="min-height: 15rem; background-image: url(img/about/05.jpg);"></div>
-          <div class="col-md-6 px-3 px-md-5 py-5 order-md-1">
-            <div class="mx-auto py-lg-5" style="max-width: 35rem;">
-              <h2 class="h3 mb-2">We are hiring new talents</h2>
-              <p class="fs-sm text-muted pb-2">If you want to be part of our team please submit you CV using the form below:</p>
-              <form class="needs-validation row g-4" method="post" novalidate>
-                <div class="col-sm-6">
-                  <input class="form-control" type="text" placeholder="Your name" required>
-                </div>
-                <div class="col-sm-6">
-                  <input class="form-control" type="email" placeholder="Your email" required>
-                </div>
-                <div class="col-12">
-                  <textarea class="form-control" rows="4" placeholder="Message" required></textarea>
-                </div>
-                <div class="col-12">
-                  <input class="form-control" type="file" required>
-                </div>
-                <div class="col-12">
-                  <button class="btn btn-info btn-shadow" type="submit">Submit your CV</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
+
       </main>
     </main>
     <!-- Footer-->

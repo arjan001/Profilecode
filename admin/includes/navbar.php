@@ -41,7 +41,6 @@
 
     <!-- MPESA WITHDRAW MODAL  ends here-->
 
-
    <!-- ADD NEW ADMIN MODAL BEGINS HERE  modal -->
     
   <div class="modal fade" id="add-admin-modal" tabindex="-1" role="dialog">
@@ -178,7 +177,7 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action=""  id="categoryfrm" method="POST">
+                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate  id="categoryfrm" method="POST">
 
                         <div class="mb-3">
                         <label class="form-label" for="Fname">Category Name<span style="color: red;">*</span></label>
@@ -214,30 +213,39 @@
                     <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body tab-content py-4">
-                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="signin-tab" action="">
+                    <form class="needs-validation tab-pane fade show active" autocomplete="off" novalidate id="#subategoryfrm" action="">
 
 
                     <div class="mb-3">
                         <label class="form-label" for="Fname">Category Name<span style="color: red;">*</span></label>
                             <br>
-                            
-                            <input class="form-control" type="text" id="CatName" placeholder="Printable Calendars"  required>
+                            <input type="hidden" id="id" value="" name="id">
+                             <select class="form-select" name="catid" id="catid">
+                        <?php
+
+                       $listcat=mysqli_query($con,"SELECT * FROM categories ORDER BY catname ASC");
+                       while($lc=mysqli_fetch_assoc($listcat)){ ?>
+
+                         <option value= "<?php echo $lc['id'] ?>"><?php echo $lc['catname'] ?></option> 
+
+                         <?php }
+
+                       ?>
+                        </select>
                             <div class="invalid-feedback">Category Name cant be blank</div>
                         </div>
 
                         <div class="mb-3">
+                         <label class="form-label" for="Fname">SubCategory Name<span style="color: red;">*</span></label>   
                        
-                        <select class="form-select" id="select-input">
-                          <option>Choose option...</option>
-                          <option>Option item 1</option>
-                          <option>Option item 2</option>
-                          <option>Option item 3</option>
-                        </select>
+                        <input class="form-control" type="text" id="subcatname" name="subcatname" placeholder="Printable Calendars"  required>
+
+                        <div class="invalid-feedback">SubCategory Name cant be blank</div>
                       
-                    </div>
+                        </div>
 
 
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Submit</button>
+                        <button class="btn btn-primary btn-shadow d-block w-100" type="submit">Add SubCategory</button>
                     </form>
 
                 </div>
@@ -264,6 +272,8 @@
                   </div>
                 </div>
               </div>
+
+
               
             </div>
             <div class="collapse navbar-collapse me-auto order-lg-2" id="navbarCollapse">
@@ -274,7 +284,7 @@
 
               <!-- Primary menu-->
               <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="index.php">Back to shopping Page</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.php"></a></li>
               </ul>
             </div>
           </div>
@@ -290,7 +300,12 @@
           </div>
         </div>
 
+                          <!-- NOTIFICATION POP UP BOX -->
+                          <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
+                          <div id="status"></div>
+                         </div>
+                           <!-- NOTIFICATION POP UP BOX -->                     
+
 
  
-
       </header>

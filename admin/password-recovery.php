@@ -9,7 +9,7 @@ include_once("includes/config.php");
   
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Account Sign In</title>
+    <title>PROFILECODE| PASSWORD RECOVERY</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Profile Code KE |Leading File MarketPlace |PROFILECODE">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -46,13 +46,13 @@ include_once("includes/config.php");
           <div class="col-md-6">
             <div class="card border-0 shadow">
               <div class="card-body">
-                <h2 class="h4 mb-1">ADMIN LOGIN</h2>
+                <h2 class="h4 mb-1">PASSWORD RECOVERY</h2>
                 <div class="py-3">
-                  <h3 class="d-inline-block align-middle fs-base fw-medium mb-2 me-2">With social account:</h3>
-                  <div class="d-inline-block align-middle"><a class="btn-social bs-google me-2 mb-2" href="#" data-bs-toggle="tooltip" title="Sign in with Google"><i class="ci-google"></i></a><a class="btn-social bs-facebook me-2 mb-2" href="#" data-bs-toggle="tooltip" title="Sign in with Facebook"><i class="ci-facebook"></i></a><a class="btn-social bs-twitter me-2 mb-2" href="#" data-bs-toggle="tooltip" title="Sign in with Twitter"><i class="ci-twitter"></i></a></div>
+                  
+
                 </div>
                 <hr>
-                <h3 class="fs-base pt-4 pb-2">Or using form below</h3>
+                <h3 class="fs-base pt-4 pb-2 ">using the form below</h3>
                 <form class="needs-validation" novalidate  id="loginfrm">
                   <div class="input-group mb-3"><i class="ci-mail position-absolute top-50 translate-middle-y text-muted fs-base ms-3"></i>
                     <input class="form-control rounded-start" type="email" placeholder="Email" required id="email">
@@ -77,7 +77,7 @@ include_once("includes/config.php");
                   
                   <hr class="mt-4">
                   <div class="text-end pt-4">
-                    <button class="btn btn-primary" type="submit"><i class="ci-sign-in me-2 ms-n21"></i>Sign In</button>
+                    <button class="btn btn-primary" type="submit"><i class="ci-sign-in me-2 ms-n21"></i>Request</button>
                   </div>
                   <br>
 

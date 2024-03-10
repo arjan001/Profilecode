@@ -42,7 +42,7 @@
                   <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="products.php"><i class="ci-cloud-upload opacity-60 me-2"></i>Products</a></li>
 
 
-                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="earnings.php"><i class="ci-dollar opacity-60 me-2"></i>Earnings<span class="fs-sm text-muted ms-auto">KSH 1,375.00</span></a></li>
+                    <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="earnings.php"><i class="ci-dollar opacity-60 me-2"></i>Earnings</a></li>
  
                     <li class="border-bottom mb-0"><a class="nav-link-style d-flex align-items-center px-4 py-3" href="mpesac2b.php"><i class="ci-currency-exchange opacity-60 me-2"></i>Mpesa C2B</a></li>
 

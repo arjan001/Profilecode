@@ -11,9 +11,10 @@ session_start();
   
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Add New Product</title>
+    <title>PROFILECODE| Add New Product |Profile Code KE</title>
     <!-- SEO Meta Tags-->
-    <meta name="description" content="PROFILECODE- Bootstrap E-commerce Template">
+    <meta name="description" content="PROFILECODE- Profile Code KE |Leading File MarketPlace |PROFILECODE">
+    
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
     <meta name="author" content="ProfileCode">
     <!-- Viewport-->
@@ -86,8 +87,8 @@ session_start();
                   <label>category</label>
                   <input type="hidden" id="id" name="id" value="">
                     <input type="hidden" value="<?php echo $vendorid ?>" name="vendorid">
-                    <select  id="productcategory" name="productcategory" class="form-select me-2" >
-                      <option>Select Category</option>
+                    <select id="productcategory" name="productcategory"class="form-select me-2" >
+                      
                       <?php
                            $chkprodss = mysqli_query($con,"SELECT * FROM categories ORDER BY catname ASC");
                            while($rows = mysqli_fetch_assoc($chkprodss)){ ?>
@@ -96,10 +97,12 @@ session_start();
 
                            <?php } ?>
                     </select>
-
-                    <select class="form-select me-2 mt-3 "  id="subcat1" name="subcat1">
-                    <label>Subcategory</label>
-                      <!-- <option>SubCategory</option> -->
+                   
+                    
+                    <label class="mt-3">Subcategory</label>
+                    <select class="form-select me-2 "id="subcat1" name="subcat1">
+                    
+                      
 
                     </select>
                   </div>
@@ -123,8 +126,8 @@ session_start();
                   <div class="row">
                     <div class="col-sm-12 mb-3">
                       <label class="form-label" for="unp-standard-price">Standard price</label>
-                      <div class="input-group"><span class="input-group-text"><i class="ci-dollar"></i></span>
-                        <input class="form-control" type="text"id="productprice" name="productprice"">
+                      <div class="input-group"><span class="input-group-text">KSH</span>
+                        <input class="form-control" type="text"id="productprice" name="productprice">
                       </div>
                       <div class="form-text">Average marketplace price for this category is KSH .</div>
                     </div>
@@ -134,7 +137,7 @@ session_start();
                   <div class="mb-3 pb-2">
                     <label class="form-label" for="unp-product-files">Product files for sale</label>
                     <input class="form-control" type="file" id="productatt" name="productatt">
-                    <div class="form-text">Maximum file size is 1GB</div>
+                    <div class="form-text">Maximum file size 10MB</div>
                   </div>
                   <button class="btn btn-primary d-block w-100" type="submit"><i class="ci-cloud-upload fs-lg me-2"></i>Save Product</button>
 
@@ -151,6 +154,7 @@ session_start();
         </div>
       </div>
     </main>
+
     <!-- Footer-->
               <!-- Footer sectionr starts-->
 
@@ -159,6 +163,7 @@ session_start();
 
 
 <script>
+
 $(function(){
  $("#prd").attr("class","active");
  $('#tb_purchs').DataTable({"aaSorting":[]});
@@ -198,7 +203,7 @@ $(function(){
   $("#status").html("<p class='text-success bg-success'><i class='fa fa-spinner fa-pulse'></i> Saving the product...</p>"); 
   $.ajax({
     method: "POST",
-    url: $("#portal_url").html()+"app/products.php",
+    url: "app/products.php",
     data: new FormData(this),
     cache:false,
     contentType: false,

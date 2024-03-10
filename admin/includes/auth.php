@@ -11,5 +11,5 @@
  }
 }
 else{
-    header("Location:../adminlogin.php");
+    header("Location:./adminlogin.php");
 }
