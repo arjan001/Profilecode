@@ -81,7 +81,7 @@ session_start();
                   <div class="col-sm-6 px-2 mb-4">
                     <div class="bg-secondary h-100 rounded-3 p-4">
                       <h3 class="h5">Your Earnings</h3>
-                      <p class="fs-sm">Your current earnings of <span class='fw-medium'>KSH </span> </p>
+                      <p class="fs-sm">Your current earnings are <span class='fw-medium'>KSH <?php echo number_format(mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM vendors WHERE id='$vendorid'"))["balance"], 2); ?></span> </p>
                     </div>
                   </div>
                   <div class="col-sm-6 px-2 mb-4">
