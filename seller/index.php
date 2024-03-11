@@ -26,7 +26,7 @@ session_start();
     <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- <link rel="manifest" href="site.webmanifest"> -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">

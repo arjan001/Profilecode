@@ -102,9 +102,9 @@ $now = date('Y-m-d H:i:s');
                     <td class="py-3 align-middle"><?php echo $row["email"];?></td>
                     <td class="py-3 align-middle">
 
-                      <a class="nav-link-style me-2" href="#" data-id="<?php echo $row["id"];?>"  data-fname="<?php echo $row["first_name"];?>" data-lname="<?php echo $row["last_name"];?>" data-phone="<?php echo $row["phone"];?>" data-email="<?php echo $row["email"];?>"  data-bs-toggle="tooltip" title="Edit Admin"><i class="ci-edit"></i></a>
+                      <a class="nav-link-style me-2" href="#" data-id="<?php echo $row["id"];?>"  data-fname="<?php echo $row["first_name"];?>" data-lname="<?php echo $row["last_name"];?>" data-phone="<?php echo $row["phone"];?>" data-email="<?php echo $row["email"];?>"  data-bs-toggle="tooltip" title="Edit Admin"><i class="ci-edit"></i> </a>
                       
-                      <a class="nav-link-style text-danger" href="#" data-bs-toggle="tooltip" title="Remove" id="<?php echo $row["id"];?>"><div class="ci-trash"></div></a>
+                      <a class="nav-link-style text-danger deluser" href="#" data-bs-toggle="tooltip" title="delete admin" id="<?php echo $row["id"];?>"><div class="ci-trash"></div></a>
                     
                     </td>
                   </tr>
@@ -177,14 +177,14 @@ $(function(){
   else{
     $.ajax({
       method:"post",
-      url: $("#portal_url").html()+"app/users.php",
+      url:"app/users.php",
       data:{
         deluser:deluser
       },
       cache:false
     }).done(function(data){
       if(data.status == "200"){
-       window.location.replace($("#portal_url").html()+"admins");
+        window.location.replace('admin.php');
       }
     });
     }

@@ -137,7 +137,7 @@ include_once("config/index.php");
         </div>
       </aside>
       <!-- Content  -->
-      <section class="col-lg-9">
+      <section class="col-lg-9" id="defaultcontent">
         <!-- Toolbar-->
         <div class="d-flex justify-content-center justify-content-sm-between align-items-center pt-2 pb-4 pb-sm-5">
 
@@ -147,7 +147,7 @@ include_once("config/index.php");
 
 
         <!-- Products grid-->
-        <div class="row mx-n2"  id="defaultcontent">
+        <div class="row mx-n2" >
           
         <?php
              $listproducts=mysqli_query($con,"SELECT * FROM products ORDER BY id DESC LIMIT 12");
@@ -168,11 +168,8 @@ include_once("config/index.php");
   
                 </div>
               </div>
-              <div class="card-body card-body-hidden">
-
                 <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>" ><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
-                
-              </div>
+   
             </div>
             <hr class="d-sm-none">
 
@@ -182,11 +179,11 @@ include_once("config/index.php");
 
           <style>
            .fit-image {
-    max-width: 550px;  /* Set the maximum width */
-    max-height: 370px; /* Set the maximum height */
-    width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
-    height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
-    object-fit: cover;
+                        max-width: 550px;  /* Set the maximum width */
+                         max-height: 370px; /* Set the maximum height */
+                         width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
+                         height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
+                         object-fit: cover;
 }
             </style>
 

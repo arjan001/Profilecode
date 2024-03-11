@@ -9,7 +9,7 @@ include_once("config/index.php");
   
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE| Your cart</title>
+    <title>PROFILECODE| Your cart | Profile Code KE</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Profile Code KE |Leading File MarketPlace |PROFILECODE">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -84,7 +84,7 @@ include_once("config/index.php");
 
             <!-- Item-->
             <div class="d-sm-flex justify-content-between align-items-center my-2 pb-3 border-bottom">
-              <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="#"><img src="img/shop/cart/dummy.png" width="160" alt="Product"></a>
+              <div class="d-block d-sm-flex align-items-center text-center text-sm-start"><a class="d-inline-block flex-shrink-0 mx-auto me-sm-4" href="#"><img src="products/<?php echo $product['productimage'] ?>" alt="<?php echo $product['productname'] ?> "  width="160" alt="Product"></a>
                 <div class="pt-2">
                   <h3 class="product-title fs-base mb-2"><a href="#"><?php echo $product['productname'] ?></a></h3>
         
@@ -166,7 +166,7 @@ include_once("config/index.php");
                 </div>
                 <div class="accordion" id="order-options">
 
-                </div><a class="btn btn-primary btn-shadow d-block w-100 mt-4" href="# "><i class="ci-card fs-lg me-2"></i>Proceed to Checkout Below</a>
+                </div><a class="btn btn-success btn-shadow d-block w-100 mt-4"><i class="ci-card fs-lg me-2"></i>PAY WITH MPESA BELOW</a>
               </div>
             </div>
           </aside>

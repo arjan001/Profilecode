@@ -31,7 +31,7 @@ if (!empty($url)) {
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+    <!-- 1 -->
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -105,7 +105,7 @@ if (!empty($url)) {
       
       <!-- Products grid (Trending products)-->
       <section class="container pt-md-3 pb-5 mb-md-3">
-        <h2 class="h3 text-center">Trending Product Files</h2>
+        <!-- <h2 class="h3 text-center">Trending Product Files</h2> -->
         <div class="row pt-4 mx-n2">
 
 
@@ -121,7 +121,7 @@ if (!empty($url)) {
 
           <!-- Product-->
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
-            <div class="card product-card">
+            <div class="card product-card mb-4">
               <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="./products/<?php echo $lp['productimage'] ?>"  class="fit-image" alt="<?php echo $lp['productname'] ?>"></a>
               <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
                 <h3 class="product-title fs-sm"><a href="single-product.php"><?php echo $lp['productname'] ?></a></h3>
@@ -130,11 +130,11 @@ if (!empty($url)) {
     
                 </div>
               </div>
-              <div class="card-body card-body-hidden">
+              
 
                 <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
                 
-              </div>
+              
             </div>
 
             <hr class="d-sm-none">
@@ -145,7 +145,7 @@ if (!empty($url)) {
 
           <style>
            .fit-image {
-    max-width: 550px;  /* Set the maximum width */
+    max-width: 500px;  /* Set the maximum width */
     max-height: 370px; /* Set the maximum height */
     width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
     height: auto;      /* Allow the image to scale height while maintaining aspect ratio */

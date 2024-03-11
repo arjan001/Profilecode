@@ -115,7 +115,7 @@
 
                   <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Support</a></li>
                   <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Privacy Policy</a></li>
-                  <li class="widget-list-item me-4"><a class="widget-list-link" href="#">Terms and conditions</a></li>
+                  <li class="widget-list-item me-4"><a class="widget-list-link" href="Terms&conditions.php">Terms and conditions</a></li>
                 </ul>
               </div>
             </div>

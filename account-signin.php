@@ -99,7 +99,7 @@ include_once("config/index.php");
                 </div>
     
                 <div class="col-sm-12">
-                  <label class="form-label" for="reg-phone">Phone Number</label>
+                  <label class="form-label" for="reg-phone">Mpesa Phone Number (earnings will be paid here)</label>
                   <input class="form-control" type="text" name="vphone" required id="reg-phone">
                   <div class="invalid-feedback">Please enter your phone number!</div>
                 </div>
