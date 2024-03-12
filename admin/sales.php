@@ -113,7 +113,7 @@ $now = date('Y-m-d H:i:s');
 
                                   
                  <?php
-                                      if ($paid == "1") { ?>
+                                    if ($row["accno"]) { ?>
                                       <span class="badge bg-success m-0">Paid</span>
                                     <?php } else { ?>
                                       <span class="badge bg-danger m-0">Not Paid</span>
@@ -131,6 +131,7 @@ $now = date('Y-m-d H:i:s');
                   </tr>
                   
                 <?php } ?>
+
                 </tbody>
               </table>
             </div>

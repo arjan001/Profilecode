@@ -30,7 +30,7 @@ include_once("config/index.php");
   <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css" />
   <!-- Main Theme Styles + Bootstrap-->
   <link rel="stylesheet" media="screen" href="css/theme.min.css">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/jquery-3.7.1.min.js"></script>
   <!-- Google Tag Manager-->
 
 </head>
@@ -160,15 +160,15 @@ include_once("config/index.php");
 
             <div class="card product-card">
                
-              <a class="card-img-top d-block overflow-hidden" href="product/<?php echo $lp['url'] ?>"><img src="products/<?php echo $lp['productimage'] ?>" alt="<?php echo $lp['productname'] ?> " class="fit-image"></a>
+              <a class="card-img-top d-block overflow-hidden" href="product.php?id=<?php echo $lp['id']; ?>"><img src="products/<?php echo $lp['productimage']?>" alt="<?php echo $lp['productname'] ?> " class="fit-image"></a>
               <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#"></a>
-                <h3 class="product-title fs-sm"><a href="product/<?php echo $lp['url'] ?>"><?php echo $lp['productname'] ?></a></h3>
+                <h3 class="product-title fs-sm"><a href="product.php?id=<?php echo $lp['id']; ?>"><?php echo $lp['productname'] ?></a></h3>
                 <div class="d-flex justify-content-between">
                   <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
   
                 </div>
               </div>
-                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>" ><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
    
             </div>
             <hr class="d-sm-none">
@@ -373,6 +373,7 @@ include_once("config/index.php");
 
 
         </div>
+
         <hr class="my-3">
         <!-- Pagination-->
         <nav class="d-flex justify-content-between pt-2" aria-label="Page navigation">

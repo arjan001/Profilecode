@@ -1,6 +1,7 @@
 <?php
 session_start();
 $sessionid = session_id();
+$listproducts =[];
 include_once("config/index.php");
 ?>
 
@@ -10,7 +11,7 @@ include_once("config/index.php");
 
 <head>
     <meta charset="utf-8">
-    <title>PROFILECODE | Smartwatch Youth Edition</title>
+    <title>PROFILECODE | Best Products ever</title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE- Leading Digital File Marketplace">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -21,7 +22,7 @@ include_once("config/index.php");
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon.png">
-    <link rel="manifest" href="site.webmanifest">
+
     <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
@@ -30,19 +31,15 @@ include_once("config/index.php");
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
     <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css"/>
     <link rel="stylesheet" media="screen" href="vendor/lightgallery/css/lightgallery-bundle.min.css"/>
+
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
+    <script src="js/jquery-3.7.1.min.js"></script>
     <!-- Google Tag Manager-->
-    <script>
-      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-      '../www.googletagmanager.com/gtm5445.html?id='+i+dl;f.parentNode.insertBefore(j,f);
-      })(window,document,'script','dataLayer','GTM-WKV3GT5');
-    </script>
+
   </head>
   <!-- Body-->
-  <body class="handheld-toolbar-enabled">
+  <body class="handheld-toolbar-enabled" id="defaultcontent">
     <!-- Google Tag Manager (noscript)-->
 
 
@@ -51,22 +48,40 @@ include_once("config/index.php");
 
       <!-- Custom page title-->
       <div class="page-title-overlap bg-dark pt-4">
-        <div class="container d-lg-flex justify-content-between py-2 py-lg-3">
-          <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
-            <nav aria-label="breadcrumb">
-              <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
-                <li class="breadcrumb-item"><a class="text-nowrap" href="index.php"><i class="ci-home"></i>Home</a></li>
-                <li class="breadcrumb-item text-nowrap"><a href="#">Shop</a>
-                </li>
-                <li class="breadcrumb-item text-nowrap active" aria-current="page">Collins Product 1</li>
+        <div class="container d-lg-flex justify-content-between py-2 py-lg-3" id="defaultcontent">
+
+                      <?php
+
+                      // Fetch the product details from the database using the product ID
+                      
+                     $product_id = $_GET['id'];
+                      $listproducts = mysqli_query($con, "SELECT * FROM products WHERE id = $product_id");
+                      while ($lp = mysqli_fetch_assoc($listproducts)) {
+
+                      // Display the product details on the single product page
+                      
+
+                      
+                      ?>
+
+
+
+
+
+        <div class="order-lg-2 mb-3 mb-lg-0 pt-lg-2">
+        <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-light flex-lg-nowrap justify-content-center justify-content-lg-start">
+        <li class="breadcrumb-item"><a class="text-nowrap" href="index.php"><i class="ci-home"></i>Home</a></li>
+        <li class="breadcrumb-item text-nowrap"><a href="#">Shop</a></li>
+        <li class="breadcrumb-item text-nowrap active" aria-current="page"><?php echo $lp['productname']; ?></li>
               </ol>
             </nav>
           </div>
           <div class="order-lg-1 pe-lg-4 text-center text-lg-start">
-            <h1 class="h3 text-light mb-2">Collins Product 1</h1>
+            <h1 class="h3 text-light mb-2"><?php echo $lp['productname']; ?></h1>
             <div>
-              <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-              </div><span class="d-inline-block fs-sm text-white opacity-70 align-middle mt-1 ms-1">74 Reviews</span>
+                 
+              <span class="d-inline-block fs-sm text-white opacity-70 align-middle mt-1 ms-1">74 Reviews</span>
             </div>
           </div>
         </div>
@@ -84,23 +99,33 @@ include_once("config/index.php");
             <div class="tab-content px-lg-3">
               <!-- General info tab-->
               <div class="tab-pane fade show active" id="general" role="tabpanel">
+
                 <div class="row">
 
                   <!-- Product gallery-->
                   <div class="col-lg-7 pe-lg-0">
                     <div class="product-gallery">
                       <div class="product-gallery-preview order-sm-2">
-                        <div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="img/shop/single/gallery/dummy.png" data-zoom="img/shop/single/gallery/dummy.png" alt="Product image">
+                        <div class="product-gallery-preview-item active fit-image" id="first"><img class="image-zoom" src="products/<?php echo $lp['productimage'] ?>" data-zoom="products/<?php echo $lp['productimage'] ?>"  alt="<?php echo $lp['productname'] ?>">
                           <div class="image-zoom-pane"></div>
                         </div>
                       </div>
                     </div>
+                              <style>
+                        .fit-image {
+                        max-width: 500px;  /* Set the maximum width */
+                         max-height: 500px; /* Set the maximum height */
+                         width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
+                         height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
+                         object-fit: cover;
+                                   }
+                       </style>
                   </div>
 
                   <!-- Product details-->
                   <div class="col-lg-5 pt-4 pt-lg-0">
                     <div class="product-details ms-auto pb-3">
-                      <div class="h3 fw-normal text-accent mb-3 me-1">KSH 124</div>
+                      <div class="h3 fw-normal text-accent mb-3 me-1">PRICE : KSH <span class="text-danger"><?php echo $lp['productprice'] ?></span> </div>
 
                            <br>                     
 
@@ -111,7 +136,7 @@ include_once("config/index.php");
                       </div>
                       <div class="d-flex align-items-center pt-2 pb-4">
 
-                        <button class="btn btn-primary btn-shadow d-block w-100" type="button"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
+                        <button class="addtocart btn btn-primary btn-shadow d-block w-100" id="<?php echo $lp['id'] ?>" type="button"><i class="ci-cart fs-lg me-2"></i>Add to Cart</button>
                       </div>
                       <div class="d-flex mb-4">
                         <div class="w-100 me-3">
@@ -150,7 +175,7 @@ include_once("config/index.php");
                           </div>
                         </div>
                         <div class="accordion-item">
-                          <h3 class="accordion-header"><a class="accordion-button collapsed" href="#localStore" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="localStore"><i class="ci-location text-muted fs-lg align-middle mt-n1 me-2"></i>Find in local store</a></h3>
+                          <h3 class="accordion-header"><a class="accordion-button collapsed" href="#localStore" role="button" data-bs-toggle="collapse" aria-expanded="true" aria-controls="localStore"><i class="ci-location text-muted fs-lg align-middle mt-n1 me-2"></i>Find in local store :coming soon</a></h3>
 
                         </div>
                       </div>
@@ -172,32 +197,64 @@ include_once("config/index.php");
       <div class="container pt-lg-3 pb-4 pb-sm-5">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <h2 class="h3 pb-2">Choose your style</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p><img src="img/shop/single/dummy.jpg" alt="Product description">
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora.</p>
+            <h2 class="h3 pb-2"><span class="text-dark"> <?php echo $lp['productname'] ?> </span>  DESCRIPTION</h2>
+            <p><?php echo $lp['description'] ?></p>
           </div>
         </div>
       </div>
+
+      <?php } ?>
+       
       <hr class="mb-5">
 
+      
 
       <!-- Product carousel (You may also like)-->
       <div class="container pt-lg-2 pb-5 mb-md-3">
-        <h2 class="h3 text-center pb-4">You may also like</h2>
+        <h2 class="h3 text-center pb-4">BROWSE SIMILAR PROCUCT CATEGORIES</h2>
         <div class="tns-carousel tns-controls-static tns-controls-outside">
-          <div class="tns-carousel-inner" data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}">
+          <div class="tns-carousel-inner " data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}">
+
+             <?php
+            // Get the category ID of the current product
+            $category_id = $lp['productcategory'];
+            
+
+            // Fetch products from the same category, excluding the current product
+            $similar_products_query = mysqli_query($con, "SELECT * FROM products WHERE productcategory = $category_id AND id != $product_id LIMIT 5");
+
+            while ($similar_product = mysqli_fetch_assoc($similar_products_query)) {
+
+              
+            ?>
 
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
                  
-                <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
+                <a class="card-img-top d-block overflow-hidden" href="#"><img src="products/<?php echo $lp['productimage']?>" alt="<?php echo $lp['produname']?>"></a>
+                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
+                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
+                  <div class="d-flex justify-content-between">
+                    <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
+   
+                  </div>
+                  <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i
+                      class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Product-->
+            <div>
+              <div class="card product-card card-static">
+                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
                   <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
                   <div class="d-flex justify-content-between">
                     <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                    </div>
+   
                   </div>
                 </div>
               </div>
@@ -210,8 +267,7 @@ include_once("config/index.php");
                   <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
                   <div class="d-flex justify-content-between">
                     <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                    </div>
+   
                   </div>
                 </div>
               </div>
@@ -224,8 +280,7 @@ include_once("config/index.php");
                   <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
                   <div class="d-flex justify-content-between">
                     <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                    </div>
+   
                   </div>
                 </div>
               </div>
@@ -238,22 +293,7 @@ include_once("config/index.php");
                   <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
                   <div class="d-flex justify-content-between">
                     <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Product-->
-            <div>
-              <div class="card product-card card-static">
-                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
-                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
-                  <div class="d-flex justify-content-between">
-                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-                    <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                    </div>
+   
                   </div>
                 </div>
               </div>
@@ -265,6 +305,8 @@ include_once("config/index.php");
         </div>
       </div>
 
+      <?php } ?>
+
 
     </main>
 
@@ -273,6 +315,42 @@ include_once("config/index.php");
 
     <!-- footer section code was removed here -->
     <?php include_once("includes/footer.php") ?>
+
+    <script>
+          $(function() {
+
+         $('#defaultcontent').on('click', '.addtocart', function(){
+            var productid=$(this).attr("id");
+            var sessionid="<?php echo $sessionid ?>"
+          $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
+          $.ajax({
+
+            url: "app/addtocart.php",
+            method: "POST",
+            data: { productid: productid, sessionid: sessionid },
+            success:
+              function (returnhtml) {
+                if (returnhtml == "success") {
+                  $("#status").fadeIn(1);
+                  $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-check'>&nbsp;</i>Product Added to cart </div>");
+                  $('.hi1').load(document.URL + ' .hi1');
+                  $("#status").fadeOut(3000);
+                } else {
+                  $("#status").fadeIn(1);
+                  $("#status").html("<div class=' col-md-12 alert alert-danger alert-dismissible'><i class='fa fa-times-circle-o'>&nbsp;</i>Error adding product to cart</div>");
+                  $('.hi1').load(document.URL + ' .hi1');
+                  $("#status").fadeOut(3000);
+                }
+              }
+
+          })
+        });
+
+
+
+
+      });
+    </script>
 
   </body>
 

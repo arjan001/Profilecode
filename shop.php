@@ -2,16 +2,7 @@
 session_start();
 $sessionid = session_id();
 include_once("config/index.php");
-$expld_url = $_SERVER["REQUEST_URI"];
-$url = $_GET['fbclid'] ?? $expld_url;
-$expld_url = explode("/", $url);
-$url = end($expld_url);
-if (!empty($url)) {
-    $lb = mysqli_fetch_assoc(mysqli_query($con, "SELECT * FROM categories WHERE url='$url'"));
-    $pcatid = $lb["id"];
-} else {
-    header("Location:../");
-}
+
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +11,8 @@ if (!empty($url)) {
 
 <head>
     <meta charset="utf-8">
-    <title> ProfileCode | Kenyans Leading Digital Files store</title>
+    <title> 
+    ProfileCode | Kenyans Leading Digital Files store </title>
     <!-- SEO Meta Tags-->
     <meta name="description" content="PROFILECODE - Leading Digital File Marketplace">
     <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
@@ -41,7 +33,7 @@ if (!empty($url)) {
     <link rel="stylesheet" media="screen" href="vendor/drift-zoom/dist/drift-basic.min.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <script src="js/jquery-3.7.1.min.js"></script>
     <!-- Google Tag Manager-->
 
   </head>
@@ -87,14 +79,14 @@ if (!empty($url)) {
               <div class="card-body px-3 pt-grid-gutter pb-0">
                 <div class="row g-0 ps-1">
 
-                  <div class="col-sm-4 px-2 mb-grid-gutter"><a class="d-block text-center text-decoration-none me-1" href="#"><img class="d-block rounded mb-3" src="img/shop/catalog/dummy.png" alt="Product">
+                  <div class="col-sm-4 px-2 mb-grid-gutter"><a class="d-block text-center text-decoration-none me-1" href="#"><img class="d-block rounded mb-3" src="img/academy.jpg" alt="Product">
                   <h3 class="fs-base pt-1 mb-0">Academic Files</h3></a>
                   </div>
 
-                  <div class="col-sm-4 px-2 mb-grid-gutter"><a class="d-block text-center text-decoration-none me-1" href="#"><img class="d-block rounded mb-3" src="img/shop/catalog/dummy.png" alt="Product">
+                  <div class="col-sm-4 px-2 mb-grid-gutter"><a class="d-block text-center text-decoration-none me-1" href="#"><img class="d-block rounded mb-3" src="img/codes.jpg" alt="Product">
                   <h3 class="fs-base pt-1 mb-0">Pass Codes</h3></a></div>
 
-                  <div class="col-sm-4 px-2 mb-grid-gutter"><a class="d-block text-center text-decoration-none me-1" href="#"><img class="d-block rounded mb-3" src="img/shop/catalog/dummy.png" alt="Product">
+                  <div class="col-sm-4 px-2 mb-grid-gutter"><a class="d-block text-center text-decoration-none me-1" href="#"><img class="d-block rounded mb-3" src="img/calender.jpg" alt="Product">
                       <h3 class="fs-base pt-1 mb-0">Printable Calenders</h3></a></div>
                 </div>
               </div>
@@ -109,22 +101,26 @@ if (!empty($url)) {
         <div class="row pt-4 mx-n2">
 
 
-                                              <?php
-                                                if($pcatid!=""){
-                                                $listproducts=mysqli_query($con,"SELECT * FROM products WHERE productcategory='$pcatid' ORDER BY id DESC LIMIT 32");
-                                                }else{
-                                                 $listproducts=mysqli_query($con,"SELECT * FROM products ORDER BY id DESC LIMIT 32");   
-                                                }
-                                                while($lp=mysqli_fetch_assoc($listproducts)){
-                                                ?>
+                  <?php
+                           $listproducts = mysqli_query($con, "SELECT * FROM products INNER JOIN categories ON products.productcategory=categories.id  LIMIT 12");
+                           while ($lp = mysqli_fetch_assoc($listproducts)) {
+                  ?>
 
 
           <!-- Product-->
           <div class="col-lg-3 col-md-4 col-sm-6 px-2 mb-4">
             <div class="card product-card mb-4">
-              <a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="./products/<?php echo $lp['productimage'] ?>"  class="fit-image" alt="<?php echo $lp['productname'] ?>"></a>
-              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Company Templates</a>
-                <h3 class="product-title fs-sm"><a href="single-product.php"><?php echo $lp['productname'] ?></a></h3>
+              <a href="product.php?id=<?php echo $lp['id']; ?>">
+                <img class="image-zoom fit-image" src="products/<?php echo $lp['productimage']; ?>"
+                  data-zoom="products/<?php echo $lp['productimage']; ?>" alt="<?php echo $lp['productname']; ?>">
+              </a>
+
+              <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#"><?php echo $lp['catname']; ?> </a>
+                <h3 class="product-title fs-sm">
+                  <a href="">
+                    <?php echo $lp['productname'] ?>
+                  </a>
+                </h3>
                 <div class="d-flex justify-content-between">
                   <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
     
@@ -132,7 +128,9 @@ if (!empty($url)) {
               </div>
               
 
-                <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+          <button class="btn btn-primary btn-sm d-block w-100 mb-2 addtocart" type="button" id="<?php echo $lp['id'] ?>">
+              <i class="ci-cart fs-sm me-1"></i>Add to Cart
+            </button>
                 
               
             </div>
@@ -141,17 +139,21 @@ if (!empty($url)) {
 
           </div>
 
+          
+          <style>
+
+                .fit-image {
+                 max-width: 500px;  /* Set the maximum width */
+                 max-height: 370px; /* Set the maximum height */
+                 width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
+                 height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
+                 object-fit: cover;
+
+                           }
+            </style>
+
           <?php } ?>
 
-          <style>
-           .fit-image {
-    max-width: 500px;  /* Set the maximum width */
-    max-height: 370px; /* Set the maximum height */
-    width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
-    height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
-    object-fit: cover;
-}
-            </style>
 
         </div>
 
@@ -167,14 +169,14 @@ if (!empty($url)) {
               <div class="py-4 my-2 my-md-0 py-md-5 px-4 ms-md-3 text-center text-sm-start">
                 <h4 class="fs-lg fw-light mb-2">Hurry up! Limited time offer</h4>
                 <h3 class="mb-4">Printable Calenders on Sale !</h3><a class="btn btn-primary btn-shadow btn-sm" href="#">Shop Now</a>
-              </div><img class="d-block ms-auto" src="img/shop/catalog/dummy2.png" alt="Shop Converse">
+              </div><img class="d-block ms-auto" src="img/image-400x224.jpg" alt="Shop Converse">
             </div>
           </div>
           <div class="col-md-4 mb-4">
             <div class="d-flex flex-column h-100 justify-content-center bg-size-cover bg-position-center rounded-3" style="background-image: url(img/blog/banner-bg.jpg);">
               <div class="py-4 my-2 px-4 text-center">
                 <div class="py-1">
-                  <h5 class="mb-2">Your Add Banner Here</h5>
+                  <h5 class="mb-2">Book This Add Space</h5>
                   <p class="fs-sm text-muted">Hurry up to reserve your spot</p><a class="btn btn-primary btn-shadow btn-sm" href="contact.php">Contact us</a>
                 </div>
               </div>
@@ -182,12 +184,13 @@ if (!empty($url)) {
           </div>
         </div>
       </section>
-      <!-- Featured category (Hoodie)-->
+      <!-- Featured category (PASSCODE FILES)-->
+
       <section class="container mb-4 pb-3 pb-sm-0 mb-sm-5">
         <div class="row">
           <!-- Banner with controls-->
           <div class="col-md-5">
-            <div class="d-flex flex-column h-100 overflow-hidden rounded-3" style="background-color: #e2e9ef;">
+            <div class="d-flex flex-column h-80 overflow-hidden rounded-3" style="background-color: #e2e9ef;">
               <div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
                 <div>
                   <h3 class="mb-1">Files & Folders Day</h3><a class="fs-md" href="#">Shop Pass Code Files<i class="ci-arrow-right fs-xs align-middle ms-1"></i></a>
@@ -200,6 +203,7 @@ if (!empty($url)) {
             </div>
           </div>
           <!-- Product grid (carousel)-->
+
           <div class="col-md-7 pt-4 pt-md-0">
             <div class="tns-carousel">
               <div class="tns-carousel-inner" data-carousel-options="{&quot;nav&quot;: false, &quot;controlsContainer&quot;: &quot;#hoodie-day&quot;}">
@@ -207,93 +211,32 @@ if (!empty($url)) {
                 <div>
                   <div class="row mx-n2">
 
-                    <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
-                      <div class="card product-card card-static">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                        <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Profile &amp; Code</a>
-                          <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+
+                  <?php
+                  
+                  $listproducts = mysqli_query($con, "SELECT * FROM products ORDER BY id DESC LIMIT 12");
+                   while ($lp = mysqli_fetch_assoc($listproducts)) { 
+
+                   ?>
 
                     <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
                       <div class="card product-card card-static">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
+                        <a class="card-img-top d-block overflow-hidden" href="product.php?id=<?php echo $lp['id']; ?>"><img class="fit-image" src="products/<?php echo $lp['productimage'] ?>" alt="<?php echo $lp['productname'] ?>"></a>
                         <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Profile &amp; Code</a>
-                          <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
+                          <h3 class="product-title fs-sm"><a href="single-product.php"><?php echo $lp['productname'] ?></a></h3>
                           <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                          </div>
+                            <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
+                            
+                         </div>
                         </div>
+                        <button class="btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"><i class="ci-cart fs-sm me-1"></i>Add to Cart</button>
                       </div>
                     </div>
 
-                    <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
-                      <div class="card product-card card-static">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                        <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Profile &amp; Code</a>
-                          <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                    <?php } ?>
 
-                    <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
-                      <div class="card product-card card-static">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                        <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Profile &amp; Code</a>
-                          <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                 </div>
 
-                    <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
-                      <div class="card product-card card-static">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                        <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Profile &amp; Code</a>
-                          <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
-                      <div class="card product-card card-static">
-                        <button class="btn-wishlist btn-sm" type="button" data-bs-toggle="tooltip" data-bs-placement="left" title="Add to wishlist"><i class="ci-heart"></i></button><a class="card-img-top d-block overflow-hidden" href="single-product.php"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                        <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">Profile &amp; Code</a>
-                          <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
-                          <div class="d-flex justify-content-between">
-                            <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-
-
-                  </div>
                 </div>
                 <!-- Carousel item-->
                 <div>
@@ -306,8 +249,7 @@ if (!empty($url)) {
                           <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -320,8 +262,7 @@ if (!empty($url)) {
                           <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -334,8 +275,7 @@ if (!empty($url)) {
                           <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -348,8 +288,7 @@ if (!empty($url)) {
                           <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -362,8 +301,7 @@ if (!empty($url)) {
                           <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -376,8 +314,7 @@ if (!empty($url)) {
                           <h3 class="product-title fs-sm"><a href="single-product.php">Product A</a></h3>
                           <div class="d-flex justify-content-between">
                             <div class="product-price"><span class="text-accent">KSH 24.<small>99</small></span></div>
-                            <div class="star-rating"><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star-filled active"></i><i class="star-rating-icon ci-star"></i>
-                            </div>
+                            
                           </div>
                         </div>
                       </div>
@@ -412,7 +349,7 @@ if (!empty($url)) {
       <!-- Blog + Instagram info cards-->
       <section class="container-fluid px-0">
         <div class="row g-0">
-          <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-faded-primary" href="blog-list-sidebar.html">
+          <div class="col-md-6"><a class="card border-0 rounded-0 text-decoration-none py-md-4 bg-faded-primary" href="#">
               <div class="card-body text-center"><i class="ci-edit h3 mt-2 mb-4 text-primary"></i>
                 <h3 class="h5 mb-1">Read the blog</h3>
                 <p class="text-muted fs-sm">Latest store, Product News and trends</p>
@@ -431,7 +368,7 @@ if (!empty($url)) {
   <?php include_once("includes/footer.php") ?>
 
   <script>
-              $('#defaultcontent').on('click', '.addtocart', function(){
+            $('#defaultcontent').on('click','.addtocart', function(){
             var productid=$(this).attr("id");
             var sessionid="<?php echo $sessionid ?>"
             $("#status").html("<div class=' col-md-12 alert alert-success alert-dismissible'><i class='fa fa-pulse fa-spin'>&nbsp;</i>adding product to cart </div>");
