@@ -32,7 +32,8 @@ session_start();
     <link rel="stylesheet" media="screen" href="../vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="../css/theme.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script src="../js/jquery-3.7.1.min.js"></script>
     <!-- Google Tag Manager-->
 
   </head>
@@ -99,12 +100,9 @@ session_start();
                     </select>
                    
                     
-                    <label class="mt-3">Subcategory</label>
-                    <select class="form-select me-2 "id="subcat1" name="subcat1">
-                    
-                      
+                <label class="mt-3">Subcategory</label>
+                <select id="productsubcategory" name="productsubcategory" class="form-select me-2"></select>
 
-                    </select>
                   </div>
                 </div>
 
@@ -158,7 +156,7 @@ session_start();
     <!-- Footer-->
               <!-- Footer sectionr starts-->
 
-              <?php include_once("includes/footerscripts-only.php") ?>
+  <?php include_once("includes/footerscripts-only.php") ?>
 
 
 
@@ -168,21 +166,26 @@ $(function(){
  $("#prd").attr("class","active");
  $('#tb_purchs').DataTable({"aaSorting":[]});
  
-   $("#productcategory").change(function(){
-     var categoryid = $(this).val();
-     $.ajax({
-        method: "POST",
-        url: "app/getsubcategories.php",
-        data: {categoryid:categoryid},
-        cache:false
-     }).done(function(data){
-        if(data != ""){
-         $("#subcat1").html(data);
-        }else{
-         $("#subcat1").html("No subcategories found");   
-        }
-     });
-    });
+
+   $('#productcategory').change(function() {
+            var categoryId = $(this).val();
+            $.ajax({
+                url: 'get_subcategories.php',
+                type: 'post',
+                data: { categoryId: categoryId },
+                dataType: 'json',
+                success: function(response) {
+                    var len = response.length;
+                    $("#productsubcategory").empty();
+                    for (var i = 0; i < len; i++) {
+                        var id = response[i]['id'];
+                        var name = response[i]['subcatname'];
+                        $("#productsubcategory").append("<option value='" + id + "'>" + name + "</option>");
+                    }
+                }
+            });
+        });
+  
 
 
  $("body").on("click",".edtpurch",function(){

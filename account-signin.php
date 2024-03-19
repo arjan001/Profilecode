@@ -29,7 +29,8 @@ include_once("config/index.php");
     <link rel="stylesheet" media="screen" href="vendor/tiny-slider/dist/tiny-slider.css"/>
     <!-- Main Theme Styles + Bootstrap-->
     <link rel="stylesheet" media="screen" href="css/theme.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="js/jquery-3.7.1.min.js"></script>
     <!-- Google Tag Manager-->
 
   </head>

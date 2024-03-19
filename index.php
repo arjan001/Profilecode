@@ -20,7 +20,7 @@ include_once("config/index.php");
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
   <link rel="icon" type="image/png" sizes="16x16" href="img/favicon.png">
-  <link rel="manifest" href="site.webmanifest">
+  <!-- <link rel="manifest" href="site.webmanifest"> -->
   <link rel="mask-icon" color="#fe6a6a" href="safari-pinned-tab.svg">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
@@ -179,8 +179,8 @@ include_once("config/index.php");
 
           <style>
            .fit-image {
-                        max-width: 550px;  /* Set the maximum width */
-                         max-height: 370px; /* Set the maximum height */
+                         max-width: 550px;  /* Set the maximum width */
+                         max-height: 290px; /* Set the maximum height */
                          width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
                          height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
                          object-fit: cover;

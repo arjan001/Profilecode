@@ -111,6 +111,7 @@
 
                         </form>
                         </div>
+
                         <div class="navbar-toolbar d-flex flex-shrink-0 align-items-center">
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"><span class="navbar-toggler-icon"></span></button><a class="navbar-tool navbar-stuck-toggler" href="#"><span class="navbar-tool-tooltip">Expand menu</span>
                                 <div class="navbar-tool-icon-box"><i class="navbar-tool-icon ci-menu"></i></div>
@@ -124,19 +125,24 @@
                                 <a class="navbar-tool-icon-box bg-secondary dropdown-toggle" href="cart.php">
                                     
                                 <span class="navbar-tool-label" >
-                                <?php echo mysqli_fetch_assoc(mysqli_query($con,"SELECT COUNT(*) AS therows FROM cart WHERE sessionid='$sessionid'"))["therows"]  ?>
+                                <?php echo mysqli_fetch_assoc(mysqli_query($con, "SELECT COUNT(*) AS therows FROM cart WHERE sessionid='$sessionid'"))["therows"] ?>
                             
                                </span><i class="navbar-tool-icon ci-cart"></i></a>
                                <a class="navbar-tool-text" href="cart.php"><small>My Cart</small></a>
 
 
                             </div>
-
-
-
+                     
                         </div>
                     </div>
+                    
                 </div>
+
+                <!-- NOTIFICATION POP UP BOX -->
+                <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
+                    <div id="status"></div>
+                </div>
+                <!-- NOTIFICATION POP UP BOX -->
 
 
                 <div class="navbar navbar-expand-lg navbar-light navbar-stuck-menu mt-n2 pt-0 pb-2">
@@ -228,6 +234,8 @@
 
                                 <li class="nav-item dropdown"><a class="nav-link " href="about.php" >How it Works</a></li>
 
+                                <li class="nav-item dropdown"><a class="nav-link " href="contact.php" >contact us</a></li>
+
                                 
 
                             </ul>
@@ -239,11 +247,7 @@
                 </div>
                 
             </div>
-                         <!-- NOTIFICATION POP UP BOX -->
-                          <div class="form-group  text-center d-flex align-items-center justify-content-center pt-2">
-                          <div id="status"></div>
-                         </div>
-                           <!-- NOTIFICATION POP UP BOX -->
+
 
                           </header>
 

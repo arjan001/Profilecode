@@ -1,7 +1,7 @@
 <?php
 session_start();
 $sessionid = session_id();
-$listproducts =[];
+
 include_once("config/index.php");
 ?>
 
@@ -104,23 +104,28 @@ include_once("config/index.php");
 
                   <!-- Product gallery-->
                   <div class="col-lg-7 pe-lg-0">
+
                     <div class="product-gallery">
+
                       <div class="product-gallery-preview order-sm-2">
-                        <div class="product-gallery-preview-item active fit-image" id="first"><img class="image-zoom" src="products/<?php echo $lp['productimage'] ?>" data-zoom="products/<?php echo $lp['productimage'] ?>"  alt="<?php echo $lp['productname'] ?>">
+                        
+            <div class="product-gallery-preview-item active fit-image" id="first"><img class="image-zoom" src="products/<?php echo $lp['productimage'] ?>" data-zoom="products/<?php echo $lp['productimage'] ?>" alt="<?php echo $lp['productname'] ?>">
                           <div class="image-zoom-pane"></div>
+
                         </div>
                       </div>
                     </div>
-                              <style>
+
+                  </div>
+                                          <style>
                         .fit-image {
-                        max-width: 500px;  /* Set the maximum width */
-                         max-height: 500px; /* Set the maximum height */
+                        max-width: 400px;  /* Set the maximum width */
+                         max-height: 400px; /* Set the maximum height */
                          width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
                          height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
-                         object-fit: cover;
+                         
                                    }
                        </style>
-                  </div>
 
                   <!-- Product details-->
                   <div class="col-lg-5 pt-4 pt-lg-0">
@@ -215,28 +220,63 @@ include_once("config/index.php");
         <div class="tns-carousel tns-controls-static tns-controls-outside">
           <div class="tns-carousel-inner " data-carousel-options="{&quot;items&quot;: 2, &quot;controls&quot;: true, &quot;nav&quot;: false, &quot;responsive&quot;: {&quot;0&quot;:{&quot;items&quot;:1},&quot;500&quot;:{&quot;items&quot;:2, &quot;gutter&quot;: 18},&quot;768&quot;:{&quot;items&quot;:3, &quot;gutter&quot;: 20}, &quot;1100&quot;:{&quot;items&quot;:4, &quot;gutter&quot;: 30}}}">
 
-             <?php
-            // Get the category ID of the current product
-            $category_id = $lp['productcategory'];
-            
 
-            // Fetch products from the same category, excluding the current product
-            $similar_products_query = mysqli_query($con, "SELECT * FROM products WHERE productcategory = $category_id AND id != $product_id LIMIT 5");
+               
 
-            while ($similar_product = mysqli_fetch_assoc($similar_products_query)) {
-
-              
-            ?>
 
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
-                 
-                <a class="card-img-top d-block overflow-hidden" href="#"><img src="products/<?php echo $lp['productimage']?>" alt="<?php echo $lp['produname']?>"></a>
+                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
                 <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
                   <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
                   <div class="d-flex justify-content-between">
-                    <div class="product-price"><span class="text-accent">KSH <?php echo $lp['productprice'] ?></span></div>
+                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
+   
+                  </div>
+                </div>
+                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i
+                    class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product-->
+            <div>
+              <div class="card product-card card-static">
+                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
+                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
+                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
+                  <div class="d-flex justify-content-between">
+                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
+   
+                  </div>
+                </div>
+                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i
+                    class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product-->
+            <div>
+              <div class="card product-card card-static">
+                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
+                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
+                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
+                  <div class="d-flex justify-content-between">
+                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
+   
+                  </div>
+                </div>
+                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i
+                    class="ci-cart fs-sm me-1"></i>Add to Cart</button>
+              </div>
+            </div>
+            <!-- Product-->
+            <div>
+              <div class="card product-card card-static">
+                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
+                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
+                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
+                  <div class="d-flex justify-content-between">
+                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
    
                   </div>
                   <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i
@@ -244,8 +284,6 @@ include_once("config/index.php");
                 </div>
               </div>
             </div>
-
-
             <!-- Product-->
             <div>
               <div class="card product-card card-static">
@@ -257,45 +295,8 @@ include_once("config/index.php");
    
                   </div>
                 </div>
-              </div>
-            </div>
-            <!-- Product-->
-            <div>
-              <div class="card product-card card-static">
-                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
-                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
-                  <div class="d-flex justify-content-between">
-                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-   
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Product-->
-            <div>
-              <div class="card product-card card-static">
-                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
-                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
-                  <div class="d-flex justify-content-between">
-                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-   
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Product-->
-            <div>
-              <div class="card product-card card-static">
-                 <a class="card-img-top d-block overflow-hidden" href="#"><img src="img/shop/catalog/dummy.png" alt="Product"></a>
-                <div class="card-body py-2"><a class="product-meta d-block fs-xs pb-1" href="#">SIMILAR PRODUCTS</a>
-                  <h3 class="product-title fs-sm"><a href="#">Reformed Church Bulletins</a></h3>
-                  <div class="d-flex justify-content-between">
-                    <div class="product-price"><span class="text-accent">KSH 250.<small>00</small></span></div>
-   
-                  </div>
-                </div>
+                <button class="addtocart btn btn-primary btn-sm d-block w-100 mb-2" type="button" id="<?php echo $lp['id'] ?>"> <i
+                    class="ci-cart fs-sm me-1"></i>Add to Cart</button>
               </div>
             </div>
 
@@ -305,7 +306,7 @@ include_once("config/index.php");
         </div>
       </div>
 
-      <?php } ?>
+  
 
 
     </main>

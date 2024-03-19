@@ -142,14 +142,13 @@ include_once("config/index.php");
           
           <style>
 
-                .fit-image {
-                 max-width: 500px;  /* Set the maximum width */
-                 max-height: 370px; /* Set the maximum height */
-                 width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
-                 height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
-                 object-fit: cover;
-
-                           }
+           .fit-image {
+                         max-width: 550px;  /* Set the maximum width */
+                         max-height: 290px; /* Set the maximum height */
+                         width: auto;       /* Allow the image to scale width while maintaining aspect ratio */
+                         height: auto;      /* Allow the image to scale height while maintaining aspect ratio */
+                         object-fit: cover;
+}
             </style>
 
           <?php } ?>
@@ -168,7 +167,7 @@ include_once("config/index.php");
             <div class="d-sm-flex justify-content-between align-items-center bg-secondary overflow-hidden rounded-3">
               <div class="py-4 my-2 my-md-0 py-md-5 px-4 ms-md-3 text-center text-sm-start">
                 <h4 class="fs-lg fw-light mb-2">Hurry up! Limited time offer</h4>
-                <h3 class="mb-4">Printable Calenders on Sale !</h3><a class="btn btn-primary btn-shadow btn-sm" href="#">Shop Now</a>
+                <h3 class="mb-4">Printable Calenders on Sale !</h3><a class="btn btn-primary btn-shadow btn-sm" href="category.php?catid=24">Shop Now</a>
               </div><img class="d-block ms-auto" src="img/image-400x224.jpg" alt="Shop Converse">
             </div>
           </div>
@@ -193,7 +192,7 @@ include_once("config/index.php");
             <div class="d-flex flex-column h-80 overflow-hidden rounded-3" style="background-color: #e2e9ef;">
               <div class="d-flex justify-content-between px-grid-gutter py-grid-gutter">
                 <div>
-                  <h3 class="mb-1">Files & Folders Day</h3><a class="fs-md" href="#">Shop Pass Code Files<i class="ci-arrow-right fs-xs align-middle ms-1"></i></a>
+                  <h3 class="mb-1">Academic Files Day</h3><a class="fs-md" href="#">Shop Revision Materials<i class="ci-arrow-right fs-xs align-middle ms-1"></i></a>
                 </div>
                 <div class="tns-carousel-controls" id="hoodie-day">
                   <button type="button"><i class="ci-arrow-left"></i></button>
@@ -214,7 +213,7 @@ include_once("config/index.php");
 
                   <?php
                   
-                  $listproducts = mysqli_query($con, "SELECT * FROM products ORDER BY id DESC LIMIT 12");
+                  $listproducts = mysqli_query($con, "SELECT * FROM products  WHERE productcategory =19 ORDER BY id DESC LIMIT 12");
                    while ($lp = mysqli_fetch_assoc($listproducts)) { 
 
                    ?>
@@ -239,7 +238,7 @@ include_once("config/index.php");
 
                 </div>
                 <!-- Carousel item-->
-                <div>
+                <!-- <div>
                   <div class="row mx-n2">
 
                   <div class="col-lg-4 col-6 px-0 px-sm-2 mb-sm-4">
@@ -321,7 +320,7 @@ include_once("config/index.php");
                     </div>
 
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>

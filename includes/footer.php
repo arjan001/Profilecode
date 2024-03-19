@@ -5,24 +5,23 @@
           <div class="col-md-4 col-sm-6">
             <div class="widget widget-links widget-light pb-2 mb-4">
               <h3 class="widget-title text-light">Shop by Categories</h3>
-              <ul class="widget-list">
+              
+<ul class="widget-list">
+    <!-- query to fetch all categories starts -->
+    <?php
+    $listcat = mysqli_query($con, "SELECT * FROM categories ORDER BY catname ASC LIMIT 10");
+    while ($lc = mysqli_fetch_assoc($listcat)) {
+        $catid = $lc["id"];
+    ?>
+        <li class="widget-list-item">
+            <a class="widget-list-link" href='category.php?catid=<?php echo $catid; ?>'>
+                <?php echo $lc["catname"]; ?>
+            </a>
+        </li>
+    <?php } ?>
+    <!-- query to fetch all categories ends here-->
+</ul>
 
-              <!-- query to fetch all categories starts -->
-              <?php
-                         $listcat=mysqli_query($con,"SELECT * FROM categories ORDER BY catname ASC");
-                         while($lc=mysqli_fetch_assoc($listcat)){
-                           $catid=$lc["id"];  
-                  ?>
-             
-
-                <li class="widget-list-item"><a class="widget-list-link" href='../shop/<?php echo $lc["url"] ?>'><?php echo $lc["catname"] ?></a></li>
-
-                <?php } ?>
-
-                <!-- query to fetch all categories ends here-->
-
- 
-              </ul>
             </div>
           </div>
           <div class="col-md-4 col-sm-6">

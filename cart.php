@@ -234,7 +234,7 @@ include_once("config/index.php");
                            $("#status").html("<p class='alert alert-success'><i class='fa fa-spinner fa-pulse'></i>checking for payment... please do not cancel</p>")
                             $.ajax({
                                method: "POST",
-                               url: "app/checkpayment2",
+                               url: "app/checkpayment2.php",
                                data: {CheckoutRequestID:CheckoutRequestID},
                                cache:false
                                
@@ -251,7 +251,7 @@ include_once("config/index.php");
                            $("#status").html("<p class='alert alert-success'><i class='fa fa-spinner fa-pulse'></i>checking for payment... please do not cancel</p>")
                             $.ajax({
                                method: "POST",
-                               url: "app/checkpayment2",
+                               url: "app/checkpayment2.php",
                                data: {CheckoutRequestID:CheckoutRequestID},
                                cache:false
                                
