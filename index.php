@@ -4,12 +4,12 @@ $sessionid = session_id();
 include_once("config/index.php");
 ?>
 
-<!DOCTYPE html>
+<!DOCTYPE html>  
 <html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>ProfileCode | Kenyans Leading Digital Files store</title>
+  <title>ProfiljeCode | Kenyans Leading Digital Files store</title>
   <!-- SEO Meta Tags-->
   <meta name="description" content="PROFILECODE- Leading Digital File Marketplace">
   <meta name="keywords" content=" e-commerce ,ProfileCode, Digital files ,Kenyan online File Store ,busines ,Creative files and folders store ,get cheap documents and files here">
